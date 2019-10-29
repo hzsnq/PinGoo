@@ -1,11 +1,57 @@
 // pages/auth/auth.js
+var API = require('../../api/api.endpoint.js');
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: null,
+    isShow: false
+  },
 
+  // 微信登录
+  onGotUserInfo: function (e) {
+    var that = this;
+    if (that.data.isShow) {
+      return
+    } else {
+      if (e.detail.userInfo) {
+        that.setData({
+          userInfo: e.detail.userInfo,
+          isShow: true
+        });
+        wx.login({
+          success: function (res) {
+            var params = {};
+            params.name = that.data.userInfo.nickName;
+            params.image = that.data.userInfo.avatarUrl;
+            params.sex = that.data.userInfo.gender;
+            params.code = res.code;
+            API.APIUser.wxLogin(params).then(d => {
+              if (d.data.code == 200) {
+                wx.setStorageSync('user_id', d.data.user_id)
+                wx.setStorageSync('user_info', e.detail.userInfo)
+                that.setData({
+                  isShow: false
+                });
+                wx.navigateBack({
+                  delta: 1
+                });
+              }
+            }).catch(e => {
+              app.showTips(e);
+            })
+          },
+          fail: function (res) {
+            app.showTips('微信登录失败');
+          }
+        });
+      } else {
+        app.showTips('微信登录失败');
+      }
+    }
   },
 
   /**

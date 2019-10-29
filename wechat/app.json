@@ -15,7 +15,8 @@
     "navigationStyle": "custom"
   },
   "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
+    "cu-custom": "/colorui/components/cu-custom/cu-custom",
+    "load-modal": "/colorui/components/load-modal/load-modal"
   },
   "sitemapLocation": "sitemap.json"
 }

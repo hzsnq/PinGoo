@@ -1,108 +1,63 @@
+<cu-custom bgColor="pg-head-bg"></cu-custom>
 <view class="mine-user">
     <image class="mine-bg" src='/images/head_01.png' mode='widthFix' style='width:100%'></image>
-    <image class="mine-cover png" src="{{userAvatarUrl ?  userAvatarUrl : '/images/e0_head.png'}}" mode='widthFix' bindtap='pushMyInfo'></image>
-    <view class='text-xl padding-df mine-name' bindtap="pushMyInfo">{{showName}}</view>
+    <image class="mine-cover png" src="{{userInfo.avatarUrl ?  userInfo.avatarUrl : '/images/e0_head.png'}}" mode='widthFix'></image>
+    <view class='text-lg padding-df mine-name'>{{userInfo.nickName}}</view>
+    <view class='mine-sjzx' bindtap='sjzx'>商家中心</view>
 </view>
 <view class='padding-xs flex text-center text-grey bg-white shadow-warp mine-list'>
     <view class='flex flex-sub flex-direction solid-right' bindtap='pushOrderListCreated'>
-        <view class="margin-top-sm">
-            <view class='cuIcon-pay text-ss text-black mine-ico'>
-                <view class="cu-tag badge mine-badge" wx:if="{{orderSubtotal.created > 0}}">
-                    <block>{{orderSubtotal.created > 99 ? "99+" : orderSubtotal.created}}</block>
-                </view>
-            </view>
+        <view class="text-xxl text-grey">0</view>
+        <view class=" text-black">
+            <text class="cuIcon-redpacket_fill "></text>
+            红包
         </view>
-        <view class="text-sm text-black">待付款</view>
     </view>
     <view class='flex flex-sub flex-direction solid-right' bindtap='pushOrderListPaid'>
-        <view class="margin-top-sm">
-            <view class='cuIcon-deliver text-ss text-black mine-ico'>
-                <view class="cu-tag badge mine-badge" wx:if="{{orderSubtotal.paid > 0}}">
-                    <block>{{orderSubtotal.paid > 99 ? "99+" : orderSubtotal.paid}}</block>
-                </view>
-            </view>
+        <view class="text-xxl text-grey">0</view>
+        <view class=" text-black">
+            <text class="cuIcon-rechargefill"></text>
+            积分
         </view>
-        <view class="text-sm text-black">待发货</view>
     </view>
     <view class='flex flex-sub flex-direction solid-right' bindtap='pushOrderListDelivering'>
-        <view class="margin-top-sm">
-            <view class='cuIcon-send text-ss text-black mine-ico'>
-                <view class="cu-tag badge mine-badge" wx:if="{{orderSubtotal.deliveried > 0}}">
-                    <block>
-                        {{orderSubtotal.deliveried > 99 ? "99+" : orderSubtotal.deliveried}}
-                    </block>
-                </view>
-            </view>
+        <view class="text-xxl text-grey">0</view>
+        <view class=" text-black">
+            <text class="cuIcon-favorfill"></text>
+            收藏
         </view>
-        <view class="text-sm text-black">待收货</view>
-    </view>
-    <view class='flex flex-sub flex-direction solid-right' bindtap='pushOrderListComment'>
-        <view class="margin-top-sm">
-            <view class='cuIcon-comment text-ss text-black mine-ico'>
-                <view class="cu-tag badge mine-badge" wx:if="{{orderSubtotal.deliveried > 0}}">
-                    <block>
-                        {{orderSubtotal.deliveried > 99 ? "99+" : orderSubtotal.deliveried}}
-                    </block>
-                </view>
-            </view>
-        </view>
-        <view class="text-sm text-black">待评价</view>
-    </view>
-    <view class='flex flex-sub flex-direction' bindtap='pushAllOrderList'>
-        <view class="margin-top-sm">
-            <view class='cuIcon-calendar text-ss text-black'></view>
-        </view>
-        <view class="text-sm text-black">我的订单</view>
     </view>
 </view>
 <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg my-content">
     <view class="cu-item arrow">
         <view class='content' data-url='../favorite/index' bindtap='tapListItem'>
-            <text class='cuIcon-likefill text-red'></text>
-            <text class='text-black'>我的收藏</text>
+            <image src='/images/myicon1.png'></image>
+            <text class='text-black pg-line'>我的消息</text>
         </view>
     </view>
     <view class="cu-item arrow">
         <view class='content' data-url='../addressList/index?isProfile=true' bindtap='tapListItem'>
-            <text class='cuIcon-locationfill text-blue'></text>
-            <text class='text-black'>收货地址</text>
-        </view>
-    </view>
-    <view class="cu-item arrow" wx:if="{{showCashgift}}">
-        <view class='content' data-url='../cashgiftList/index' bindtap='tapListItem'>
-            <text class='cuIcon-redpacket_fill text-green'></text>
-            <text class='text-black'>我的红包</text>
-        </view>
-    </view>
-    <view class="cu-item arrow">
-        <view class='content' data-url='../score/index' bindtap='tapListItem'>
-            <text class='cuIcon-rechargefill text-cyan'></text>
-            <text class='text-black'>我的积分</text>
+            <image src='/images/myicon2.png'></image>
+            <text class='text-black pg-line'>商家入驻</text>
         </view>
     </view>
     <view class="cu-item arrow">
         <view class='content' data-url='../recommend/index' bindtap='tapListItem'>
-            <text class='cuIcon-crownfill text-orange'></text>
-            <text class='text-black'>我的推荐</text>
+            <image src='/images/myicon3.png'></image>
+            <text class='text-black pg-line'>邀请有奖</text>
             <image src='/images/myicon6.gif' class="my-img"></image>
         </view>
     </view>
     <view class="cu-item arrow">
         <view class='content' data-url='../capital/index' bindtap='tapListItem'>
-            <text class='cuIcon-choicenessfill text-pink'></text>
-            <text class='text-black'>我的资金</text>
+            <image src='/images/myicon4.png'></image>
+            <text class='text-black pg-line'>意见反馈</text>
         </view>
     </view>
     <view class="cu-item arrow">
         <view class='content' data-url='../help/index' bindtap='tapListItem'>
-            <text class='cuIcon-formfill text-purple'></text>
-            <text class='text-black'>使用帮助</text>
-        </view>
-    </view>
-    <view class="cu-item arrow">
-        <view class='content' data-url='../bonusQrcode/index' bindtap='tapListItem'>
-            <text class='cuIcon-qr_code text-olive'></text>
-            <text class='text-black'>我的推广二维码</text>
+            <image src='/images/myicon5.png'></image>
+            <text class='text-black pg-line'>关于我们</text>
         </view>
     </view>
 </view>

@@ -26,13 +26,13 @@
     border-radius: 50%;
     z-index: 1;
     margin-left: 10%;
-    margin-top: 15%;
+    margin-top: 7%;
 }
 
-.text-xl {
+.text-lg {
     z-index: 1;
-    margin-left: 5%;
-    margin-top: 19%;
+    margin-left: 4%;
+    margin-top: 12%;
 }
 
 .mine-list {
@@ -45,15 +45,29 @@
     position: relative;
 }
 
-.cu-tag.mine-badge {
-    top: -10rpx;
-    right: 20rpx;
-}
-
 .my-img {
     float: right;
 }
 
 .mine-name {
     height: 60rpx;
+}
+
+.shadow-lg {
+    box-shadow: 0rpx 40rpx 100rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+
+.mine-sjzx {
+    position: absolute;
+    right: 0;
+    top: 24%;
+    padding: 4rpx 20rpx;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+}
+
+.pg-line {
+    vertical-align: middle;
 }
