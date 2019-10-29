@@ -2,7 +2,7 @@
 <classify wx:if="{{PageCur=='classify'}}"></classify>
 <order wx:if="{{PageCur=='order'}}"></order>
 <about wx:if="{{PageCur=='about'}}"></about>
-<view class="cu-bar tabbar bg-white shadow foot">
+<!-- <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action" bindtap="NavChange" data-cur="business">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/basics{{PageCur=='business'?'_cur':''}}.png"></image>
@@ -26,5 +26,23 @@
       <image src="/images/tabbar/about{{PageCur=='about'?'_cur':''}}.png"></image>
     </view>
     <view class="{{PageCur=='about'?'text-green':'text-gray'}}">我的</view>
+  </view>
+</view> -->
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action {{PageCur=='business'?'text-green':''}}" bindtap="NavChange" data-cur="business">
+    <view class="cuIcon-homefill"></view>
+    首页
+  </view>
+  <view class="action {{PageCur=='classify'?'text-green':''}}" bindtap="NavChange" data-cur="classify">
+    <view class="cuIcon-similar"></view>
+    分类
+  </view>
+  <view class="action {{PageCur=='order'?'text-green':''}}" bindtap="NavChange" data-cur="order">
+    <view class="cuIcon-cart"></view>
+    订单
+  </view>
+  <view class="action {{PageCur=='about'?'text-green':''}}" bindtap="NavChange" data-cur="about">
+    <view class="cuIcon-my"></view>
+    我的
   </view>
 </view>
