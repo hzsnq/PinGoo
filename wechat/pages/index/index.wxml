@@ -1,5 +1,5 @@
-<business wx:if="{{PageCur=='business'}}"></business>
-<classify wx:if="{{PageCur=='classify'}}"></classify>
+<business wx:if="{{PageCur=='business'}}" id="business"></business>
+<classify wx:if="{{PageCur=='classify'}}" id="classify"></classify>
 <order wx:if="{{PageCur=='order'}}"></order>
 <about wx:if="{{PageCur=='about'}}"></about>
 <!-- <view class="cu-bar tabbar bg-white shadow foot">

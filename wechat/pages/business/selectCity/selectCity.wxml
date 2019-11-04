@@ -1,0 +1,40 @@
+<!-- pages/business/selectCity/selectCity.wxml -->
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+    <view slot="content">选择城市</view>
+</cu-custom>
+<view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
+    <view class="search-form round">
+        <text class="cuIcon-search"></text>
+        <input type="text" placeholder="输入搜索的城市名" confirm-type="search"></input>
+    </view>
+    <view class="action">
+        <button class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
+    </view>
+</view>
+<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
+    <view class="cu-list menu-avatar no-padding">
+        <view class="cu-item">
+            <view class="content">当前选择城市：{{selectCityName}}</view>
+        </view>
+    </view>
+    <block wx:for="{{list}}" wx:key wx:for-item="item1">
+        <view class="padding indexItem-{{list[index]}}" id="indexes-{{list[index]}}" data-index="{{list[index]}}">
+            {{item1}}
+        </view>
+        <view class="cu-list menu-avatar no-padding">
+            <!-- 暂时绑定的city_id都为1 -->
+            <view class="cu-item" wx:for="{{list_city}}" wx:key wx:for-item="item2" wx:if="{{item1==item2.pinyin}}" bindtap="selectedCity" data-id="{{1}}" data-name="{{item2.name}}">
+                <view class="content">{{item2.name}}</view>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<view class="indexBar" style="height:calc(100vh - {{CustomBar}}px - 50px)">
+    <view class="indexBar-box" bindtouchstart="tStart" bindtouchend="tEnd" catchtouchmove="tMove">
+        <view class="indexBar-item" wx:for="{{list}}" wx:key id="{{index}}" bindtouchstart="getCur" bindtouchend="setCur">
+            {{list[index]}}
+        </view>
+    </view>
+</view>
+<!-- 选择显示 -->
+<view hidden="{{hidden}}" class="indexToast">{{listCur}}</view>

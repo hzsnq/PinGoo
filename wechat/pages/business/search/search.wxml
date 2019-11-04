@@ -1,0 +1,49 @@
+<!-- pages/business/search/search.wxml -->
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+    <view slot="content">搜索</view>
+</cu-custom>
+<view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
+    <view class='search-form round'>
+        <text class="cuIcon-search"></text>
+        <input type="text" placeholder="请输入您要搜索的商品" confirm-type="search" bindinput="bindInput" name='keyword' value='{{inputValue}}' type="text" bindconfirm="bindChange"></input>
+        <text class="cuIcon-roundclose text-lg" bindtap="tapCancel" wx:if="{{isShow}}"></text>
+    </view>
+    <view class='action'>
+        <button class='cu-btn bg-gradual-green shadow-blur round' bindtap="bindChange">搜索</button>
+    </view>
+</view>
+<view class="container">
+    <view class='search-list'>
+        <view class="hot-search {{isHistorySearchShow?'show':'hide'}}">
+            <view class='hot-search-title'>
+                <view class='left'>
+                    <!-- <image src='../../image/icon_search_recent.png'></image> -->
+                    <text>最近搜索</text>
+                </view>
+                <image class='right' src='../../../images/icon_search_delete.png' bindtap='deleteTap'></image>
+            </view>
+            <view class="hot-search-list">
+                <block wx:for-items="{{searchList}}" wx:key>
+                    <view class='desc' id="{{index}}" bindtap='tapHistorySearch'>
+                        <text class='content'>{{item}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="hot-search {{isHotSearchShow?'show':'hide'}}">
+            <view class='hot-search-title'>
+                <view class='left'>
+                    <!-- <image src='../../image/icon_search_hot.png'></image> -->
+                    <text>热门搜索</text>
+                </view>
+            </view>
+            <view class="hot-search-list">
+                <block wx:for-items="{{keywords}}" wx:key>
+                    <view class='desc' id="{{index}}" bindtap='tapKeyword' wx:if="{{item.content==''?'':item.content}}">
+                        <text class='content'>{{item.content}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>

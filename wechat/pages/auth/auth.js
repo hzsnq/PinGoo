@@ -1,5 +1,5 @@
 // pages/auth/auth.js
-var API = require('../../api/api.endpoint.js');
+const API = require('../../api/api.endpoint.js');
 const app = getApp();
 Page({
 
@@ -13,7 +13,7 @@ Page({
 
   // 微信登录
   onGotUserInfo: function (e) {
-    var that = this;
+    let that = this;
     if (that.data.isShow) {
       return
     } else {
@@ -24,7 +24,7 @@ Page({
         });
         wx.login({
           success: function (res) {
-            var params = {};
+            let params = {};
             params.name = that.data.userInfo.nickName;
             params.image = that.data.userInfo.avatarUrl;
             params.sex = that.data.userInfo.gender;

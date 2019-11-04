@@ -1,4 +1,1 @@
 /* colorui/components/cu-custom.wxss */
-.pg-head-bg {
-    background: rgb(255, 45, 78);
-}
