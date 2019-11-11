@@ -1,5 +1,5 @@
 <!-- pages/business/search/search.wxml -->
-<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">搜索</view>
 </cu-custom>
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
@@ -17,14 +17,13 @@
         <view class="hot-search {{isHistorySearchShow?'show':'hide'}}">
             <view class='hot-search-title'>
                 <view class='left'>
-                    <!-- <image src='../../image/icon_search_recent.png'></image> -->
                     <text>最近搜索</text>
                 </view>
                 <image class='right' src='../../../images/icon_search_delete.png' bindtap='deleteTap'></image>
             </view>
             <view class="hot-search-list">
                 <block wx:for-items="{{searchList}}" wx:key>
-                    <view class='desc' id="{{index}}" bindtap='tapHistorySearch'>
+                    <view class='desc' id="{{index}}" bindtap='tapHistorySearch' data-item="{{item}}">
                         <text class='content'>{{item}}</text>
                     </view>
                 </block>
@@ -33,7 +32,6 @@
         <view class="hot-search {{isHotSearchShow?'show':'hide'}}">
             <view class='hot-search-title'>
                 <view class='left'>
-                    <!-- <image src='../../image/icon_search_hot.png'></image> -->
                     <text>热门搜索</text>
                 </view>
             </view>
@@ -43,6 +41,64 @@
                         <text class='content'>{{item.content}}</text>
                     </view>
                 </block>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 搜索结果列表 -->
+<view class="cu-bar bg-white" wx:if="{{contentListShow}}">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">搜索结果</text>
+    </view>
+</view>
+<view class="cu-card article no-card bg-white pg-index-list" wx:if="{{contentListShow}}">
+    <view wx:for="{{contentList}}" wx:key class="cu-item shadow" style='animation: show 1.2s 1;-webkit-animation: show 1.2s 1;' bindtap="toChild" id="{{item.id}}">
+        <view class="content">
+            <image src="{{imgUrl}}{{item.coverimg}}" mode="aspectFill" lazy-load="{{true}}"></image>
+            <view class="desc">
+                <view class='text-lg text-black'>{{item.name}}</view>
+                <view class='text-sm padding-tb-xs'>
+                    <block wx:if="{{item.score_fraction>0}}">
+                        <text class="cuIcon-favorfill text-red" style="letter-spacing:2rpx">
+                            <block>{{item.score_fraction>5?5.0:item.score_fraction}}</block>
+                        </text>
+                    </block>
+                    <block wx:else>
+                        <text class="cuIcon-favorfill">无评分</text>
+                    </block>
+                    人均:
+                    <text class="text-price">{{item.average}}</text>
+                </view>
+                <view class='text-sm text-cut padding-tb-xs' style="width:220px">
+                    {{item.address}}
+                </view>
+                <view class='text-sm pg-position'>{{item.distance}}km</view>
+                <view class="padding-tb-xs">
+                    <block wx:if='{{item.list_coupon.length > 0}}'>
+                        <!-- <view class='cu-tag bg-red light sm round'>券</view> -->
+                        <block wx:for='{{item.list_coupon}}' wx:key>
+                            <block wx:if='{{item.types == 1}}'>
+                                <view class='cu-tag bg-red light sm round'>
+                                    满 {{item.money}}减{{item.money_many}}
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class='cu-tag bg-red light sm round'>
+                                    满 {{item.money}}打{{item.money_many}}折
+                                </view>
+                            </block>
+                        </block>
+                    </block>
+                    <block wx:if='{{item.list_packages.length > 0}}'>
+                        <!-- <view class='cu-tag bg-green light sm round'>团</view> -->
+                        <block wx:for='{{item.list_packages}}' wx:key>
+                            <view class='cu-tag bg-green light sm round'>
+                                {{item.package_name}}
+                            </view>
+                        </block>
+                    </block>
+                </view>
             </view>
         </view>
     </view>

@@ -1,5 +1,5 @@
 //index.js
-var API = require('../../api/api.endpoint.js');
+const API = require('../../api/api.endpoint.js');
 const mapFile = require('../../libs/map/amap-wx.js')
 const uitls = require('../../utils/util.js')
 const app = getApp();
@@ -46,7 +46,7 @@ Page({
           let district = data[0].regeocodeData.addressComponent.district;
           let cityName = uitls.cityName(province, district, city);
           let cname = wx.getStorageSync('city_name')
-          if (cname != undefined && cname != null) {
+          if (cname != undefined && cname != null && cname != '') {
             cityName = cname
           }
           app.globalData.cityName = cityName;
@@ -60,6 +60,7 @@ Page({
                 console.log('首页内容已加载')
                 return
               } else if (that.data.PageCur == 'business') {
+                app.showTips('获取位置成功')
                 console.log('首页内容没加载')
                 that.selectComponent("#business").showBusiness();
               } else if (that.data.PageCur == 'classify') {
@@ -85,6 +86,8 @@ Page({
           })
         }
       })
+    } else if (that.data.PageCur == 'about') {
+      that.selectComponent("#about").isCollection();
     }
   },
   onShareAppMessage() {

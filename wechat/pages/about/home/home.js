@@ -1,11 +1,13 @@
 // pages/about/home/home.js
 const app = getApp();
+const API = require('../../../api/api.endpoint.js');
 Component({
   options: {
     addGlobalClass: true,
   },
   data: {
     userInfo: null,
+    userParameters: []
   },
   /*组件生命周期*/
   lifetimes: {
@@ -15,10 +17,7 @@ Component({
     },
     attached() {
       console.log("在组件实例进入页面节点树时执行")
-      let user = wx.getStorageSync("user_info")
-      this.setData({
-        userInfo: user
-      })
+      this.isCollection()
     },
     ready() {
       console.log("在组件在视图层布局完成后执行")
@@ -50,8 +49,40 @@ Component({
 
   },
   methods: {
-    pushOrderListCreated() {
-      console.log(1)
-    }
+    tapListItem: function (e) {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login();
+        return
+      }
+      console.log(e.currentTarget.dataset.url)
+      wx.navigateTo({
+        url: e.currentTarget.dataset.url
+      })
+    },
+    //获取当前用户收藏等信息
+    isCollection: function () {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        return
+      }
+      let user = wx.getStorageSync("user_info")
+      this.setData({
+        userInfo: user
+      })
+      let user_id = wx.getStorageSync("user_id");
+      let params = {};
+      params.user_id = user_id;
+      API.APIUser.UserInfo(params).then(d => {
+        console.log(d)
+        if (d.data.code == 200) {
+          this.setData({
+            userParameters: d.data
+          })
+        }
+      })
+    },
   }
 })

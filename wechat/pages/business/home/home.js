@@ -154,29 +154,6 @@ Component({
         })
         that.showBusiness()
       }
-
-      // //创建节点选择器
-      // let query = wx.createSelectorQuery().in(this);
-      // let scrollHeight;
-      // let indexTopHeight;
-      // //选择id
-      // query.select('#yxtj').boundingClientRect()
-      // query.exec(function (res) {
-      //   console.log(res[0].height)
-      //   console.log(res[0].height - res[0].height / that.data.pageNum)
-      //   scrollHeight = res[0].height - res[0].height / that.data.pageNum;
-      // })
-      // query.select('#index-top').boundingClientRect()
-      // query.exec(function (res) {
-      //   console.log(res[0].height)
-      //   console.log(res[0].height + that.data.CustomBar)
-      //   indexTopHeight = res[0].height + that.data.CustomBar;
-      // })
-      // setTimeout(function () {
-      //   that.setData({
-      //     scrollTo: scrollHeight + indexTopHeight
-      //   })
-      // }, 2000)
     },
     cardSwiper(e) {
       this.setData({
@@ -212,6 +189,7 @@ Component({
         that.setData({
           cityName: cname
         })
+        console.log(that.data.contentList.length, '数组长度')
         that.getContentList(id, location);
       }
     },
@@ -295,7 +273,7 @@ Component({
       let page_cur = 'classify';
       let id = e.target.id;
       let item_id = e.target.dataset.id;
-      wx.navigateTo({
+      wx.redirectTo({
         url: "/pages/index/index?id=" + id + '&page_cur=' + page_cur + '&item_id=' + item_id
       })
     },
@@ -307,6 +285,17 @@ Component({
     toSearch() {
       wx.navigateTo({
         url: "/pages/business/search/search"
+      })
+    },
+    toChild(e) {
+      let id = e.currentTarget.id;
+      wx.navigateTo({
+        url: "/pages/business/businessInfo/businessInfo?id=" + id
+      })
+    },
+    toView() {
+      wx.navigateTo({
+        url: "/pages/about/recommend/recommend"
       })
     }
   }

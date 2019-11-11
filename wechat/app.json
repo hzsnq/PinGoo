@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/auth/auth",
+
     "pages/about/home/home",
+    "pages/about/recommend/recommend",
+    "pages/about/collection/collection",
 
     "pages/order/home/home",
 
@@ -10,11 +13,15 @@
 
     "pages/business/home/home",
     "pages/business/selectCity/selectCity",
-    "pages/business/search/search"
+    "pages/business/search/search",
+    "pages/business/businessInfo/businessInfo",
+    "pages/business/couponAndPackage/couponAndPackage",
+    "pages/business/payment/payment",
+    "pages/business/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarBackgroundColor": "#EF176E",
     "navigationBarTitleText": "拼Goo+",
     "navigationBarTextStyle": "white",
     "navigationStyle": "custom",

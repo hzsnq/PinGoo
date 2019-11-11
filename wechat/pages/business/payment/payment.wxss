@@ -1,0 +1,14 @@
+/* pages/business/payment/payment.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+page {
+    padding-bottom: 100rpx;
+}
+
+.cart {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

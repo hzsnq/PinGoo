@@ -2,26 +2,32 @@
 <view class="mine-user">
     <image class="mine-bg" src='/images/head_01.png' mode='widthFix' style='width:100%'></image>
     <image class="mine-cover png" src="{{userInfo.avatarUrl ?  userInfo.avatarUrl : '/images/e0_head.png'}}" mode='widthFix'></image>
-    <view class='text-lg padding-df mine-name'>{{userInfo.nickName}}</view>
+    <view class='text-lg padding-df mine-name'>{{userInfo.nickName?userInfo.nickName:'未登录'}}</view>
     <view class='mine-sjzx' bindtap='sjzx'>商家中心</view>
 </view>
 <view class='padding-xs flex text-center text-grey bg-white shadow-warp mine-list'>
     <view class='flex flex-sub flex-direction solid-right' bindtap='pushOrderListCreated'>
-        <view class="text-xxl text-grey">0</view>
+        <view class="text-xxl text-grey">
+            {{userParameters.redscount?userParameters.redscount:0}}
+        </view>
         <view class=" text-black">
             <text class="cuIcon-redpacket_fill "></text>
             红包
         </view>
     </view>
     <view class='flex flex-sub flex-direction solid-right' bindtap='pushOrderListPaid'>
-        <view class="text-xxl text-grey">0</view>
+        <view class="text-xxl text-grey">
+            {{userParameters.integralcount?userParameters.integralcount:0}}
+        </view>
         <view class=" text-black">
             <text class="cuIcon-rechargefill"></text>
             积分
         </view>
     </view>
-    <view class='flex flex-sub flex-direction solid-right' bindtap='pushOrderListDelivering'>
-        <view class="text-xxl text-grey">0</view>
+    <view class='flex flex-sub flex-direction solid-right' data-url='/pages/about/collection/collection' bindtap='tapListItem'>
+        <view class="text-xxl text-grey">
+            {{userParameters.collectioncount?userParameters.collectioncount:0}}
+        </view>
         <view class=" text-black">
             <text class="cuIcon-favorfill"></text>
             收藏
@@ -42,7 +48,7 @@
         </view>
     </view>
     <view class="cu-item arrow">
-        <view class='content' data-url='../recommend/index' bindtap='tapListItem'>
+        <view class='content' data-url='/pages/about/recommend/recommend' bindtap='tapListItem'>
             <image src='/images/myicon3.png'></image>
             <text class='text-black pg-line'>邀请有奖</text>
             <image src='/images/myicon6.gif' class="my-img"></image>

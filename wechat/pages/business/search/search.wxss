@@ -1,11 +1,10 @@
 /* pages/business/search/search.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
 page {
     height: 100%;
     padding-top: 100rpx;
-}
-
-.container {
-    height: 100%;
 }
 
 .search-list {

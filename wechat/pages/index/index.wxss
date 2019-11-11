@@ -1,4 +1,7 @@
 /**index.wxss**/
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
 .userinfo {
   display: flex;
   flex-direction: column;

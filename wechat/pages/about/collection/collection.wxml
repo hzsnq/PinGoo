@@ -1,0 +1,56 @@
+<!-- pages/about/collection/collection.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">我的收藏</view>
+</cu-custom>
+<view class="cu-card article no-card bg-white pg-index-list " wx:if="{{contentListShow}}">
+    <view wx:for="{{contentList}}" wx:key class="cu-item padding-top shadow {{modalName=='move-box-'+ index?'move-cur':''}}" style='animation: show 1.2s 1;-webkit-animation: show 1.2s 1;' bindtouchstart='ListTouchStart' bindtouchmove='ListTouchMove' bindtouchend='ListTouchEnd' data-target="move-box-{{index}}">
+        <view class="content" bindtap="toChild" id="{{item.shops_id}}">
+            <image src="{{imgUrl}}{{item.coverimg}}" mode="aspectFill" lazy-load="{{true}}"></image>
+            <view class="desc">
+                <view class='text-lg text-black'>{{item.name}}</view>
+                <view class='text-sm padding-tb-xs'>
+                    <block wx:if="{{item.score_fraction>0}}">
+                        <text class="cuIcon-favorfill text-red" style="letter-spacing:2rpx">
+                            <block>{{item.score_fraction>5?5.0:item.score_fraction}}</block>
+                        </text>
+                    </block>
+                    <block wx:else>
+                        <text class="cuIcon-favorfill">无评分</text>
+                    </block>
+                    人均:
+                    <text class="text-price">{{item.average}}</text>
+                </view>
+                <view class='text-sm text-cut padding-tb-xs' style="width:220px">
+                    {{item.address}}
+                </view>
+                <!-- <view class='text-sm pg-position'>{{item.distance}}km</view> -->
+                <view class="padding-tb-xs">
+                    <block wx:if='{{item.list_coupon.length > 0}}'>
+                        <block wx:for='{{item.list_coupon}}' wx:key>
+                            <block wx:if='{{item.types == 1}}'>
+                                <view class='cu-tag bg-red light sm round'>
+                                    满 {{item.money}}减{{item.money_many}}
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class='cu-tag bg-red light sm round'>
+                                    满 {{item.money}}打{{item.money_many}}折
+                                </view>
+                            </block>
+                        </block>
+                    </block>
+                    <block wx:if='{{item.list_packages.length > 0}}'>
+                        <block wx:for='{{item.list_packages}}' wx:key>
+                            <view class='cu-tag bg-green light sm round'>
+                                {{item.package_name}}
+                            </view>
+                        </block>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="move">
+            <view class="bg-red" data-id="{{item.id}}" bindtap="delItem">删除</view>
+        </view>
+    </view>
+</view>

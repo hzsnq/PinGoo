@@ -1,0 +1,7 @@
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.cu-list.menu-avatar>.cu-item .action {
+    width: 150rpx;
+    text-align: center;
+}

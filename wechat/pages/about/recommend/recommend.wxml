@@ -1,0 +1,5 @@
+<!-- pages/about/recommend/recommend.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">商家信息</view>
+</cu-custom>
+<view class="bg"></view>

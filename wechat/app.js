@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
     this.getSystemInfo();
-    this.globalData.token = wx.getStorageSync("user_id", null)
+    this.globalData.token = wx.getStorageSync("user_id")
   },
   onShow: function (options) {
     console.log('App Show');
@@ -40,6 +40,7 @@ App({
     })
   },
   isLogin: function () {
+    this.globalData.token = wx.getStorageSync("user_id");
     return !!this.globalData.token
   },
   //获取系统信息

@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log('北京'.spell());
+    app.globalData.dataStatus = true;
     let list = [];
     for (let i = 0; i < 26; i++) {
       list[i] = String.fromCharCode(65 + i)
@@ -122,7 +122,7 @@ Page({
     let city_name = e.currentTarget.dataset.name;
     wx.setStorageSync("city_name", city_name);
     wx.setStorageSync("city_id", city_id);
-    wx.navigateTo({
+    wx.redirectTo({
       url: "/pages/index/index"
     })
   },

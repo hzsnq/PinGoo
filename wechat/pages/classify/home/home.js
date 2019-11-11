@@ -314,6 +314,12 @@ Component({
         isShowModal: true
       })
       this.showClassify()
+    },
+    toChild(e) {
+      let id = e.currentTarget.id;
+      wx.navigateTo({
+        url: "/pages/business/businessInfo/businessInfo?id=" + id
+      })
     }
   }
 })

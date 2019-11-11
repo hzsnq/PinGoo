@@ -1,0 +1,278 @@
+<!-- pages/business/couponAndPackage/couponAndPackage.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">{{pageName=='coupon'?'优惠券':'套餐'}}</view>
+</cu-custom>
+<swiper class="screen-swiper square-dot" wx:if="{{bannerList.length>0}}">
+    <swiper-item wx:for="{{bannerList}}" wx:key bindtap='previewImage' data-src='{{item.image}}' data-list='{{bannerList}}'>
+        <image src="{{imgUrl}}{{item.image}}" mode="widthFill"></image>
+    </swiper-item>
+</swiper>
+<view class="cu-list menu" wx:if="{{couponList.id>0}}">
+    <view class="cu-item ">
+        <view class="content padding-tb">
+            <view class="">
+                <text class="text-lg">{{businessInfo.name}}</text>
+            </view>
+            <view class="text-df">
+                <block wx:if='{{couponList.types == 1}}'>
+                    <text>满{{couponList.money}}</text>
+                    <text class="padding-lr-xs text-red">减{{couponList.money_single}}</text>
+                </block>
+                <block wx:if='{{couponList.types == 2}}'>
+                    <text>满{{couponList.money}}</text>
+                    <text class="padding-lr-xs text-red">打{{couponList.money_single}}折</text>
+                </block>
+            </view>
+            <view class="text-df">
+                <text>随时退</text>
+                <text class="padding-lr-xs">|</text>
+                <text>过期退</text>
+                <text class="padding-lr-xs">|</text>
+                <text>{{couponList.bespeak==1?"免预约":couponList.texts}}</text>
+            </view>
+        </view>
+        <view class="action">
+            <view class="text-df">已售{{couponList.purchase_sum}}份</view>
+        </view>
+    </view>
+</view>
+<view class="cu-list menu" wx:if="{{packagesList.id>0}}">
+    <view class="cu-item ">
+        <view class="content padding-tb">
+            <view class="">
+                <text class="text-lg">{{businessInfo.name}}</text>
+            </view>
+            <view class="text-df">
+                <text>{{packagesList.package_name}}</text>
+                <text class="text-price text-red margin-lr-sm">{{packagesList.money_single}}</text>
+            </view>
+            <view class="text-df">
+                <text>随时退</text>
+                <text class="padding-lr-xs">|</text>
+                <text>过期退</text>
+                <text class="padding-lr-xs">|</text>
+                <text>{{packagesList.bespeak==1?"免预约":packagesList.texts}}</text>
+            </view>
+        </view>
+        <view class="action">
+            <view class="text-df">已售{{packagesList.purchase_sum}}份</view>
+        </view>
+    </view>
+</view>
+<!-- 商家地址 -->
+<view class="cu-bar bg-white margin-top">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">商家地址</text>
+    </view>
+</view>
+<view class="cu-list menu">
+    <view class="cu-item ">
+        <view class="action">
+            <view class=" text-lg" bindtap="map" data-address='{{businessInfo.address}}' data-name='{{businessInfo.name}}' data-lat='{{businessInfo.lat}}' data-lon='{{businessInfo.lon}}'>
+                <text class="cuIcon-location margin-right-xs"></text>
+            </view>
+        </view>
+        <view class="content" bindtap="map" data-address='{{businessInfo.address}}' data-name='{{businessInfo.name}}' data-lat='{{businessInfo.lat}}' data-lon='{{businessInfo.lon}}'>
+            <view class="">
+                <text class="text-df">{{businessInfo.address}}</text>
+            </view>
+            <view class=" flex">
+                <text class="text-df">
+                    <block>距您{{businessInfo.distance}}km</block>
+                </text>
+            </view>
+        </view>
+        <view class="action">
+            <view class=" text-green text-sl" bindtap='callBusiness' data-phone='{{businessInfo.tel}}'>
+                <text class="cuIcon-phone"></text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 套餐 -->
+<view class="cu-bar bg-white margin-top" wx:if="{{packageContent.length>0}}">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">套餐</text>
+    </view>
+</view>
+<view class="cu-list menu" wx:if="{{packageContent.length>0}}">
+    <view class="cu-item " wx:if="{{packageContent.length>0}}">
+        <view class="content">
+            <text class="">名称</text>
+        </view>
+        <view class="action text-right margin-right-lg">
+            <text class="">数量</text>
+        </view>
+        <view class="action">
+            <text class="">价格</text>
+        </view>
+    </view>
+    <view class="cu-item " wx:for="{{packageContent}}" wx:key wx:if="{{packageContent.length>0}}">
+        <view class="content ">
+            <text class="">{{item.content_name}}</text>
+        </view>
+        <view class="action text-right margin-right-lg">
+            <text class="">{{item.number}}份</text>
+        </view>
+        <view class="action">
+            <text class="">{{item.price}}元</text>
+        </view>
+    </view>
+</view>
+<!-- 套餐图片 -->
+<view class="cu-bar bg-white margin-top" wx:if="{{packageImg.length>0}}">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">商家实照</text>
+    </view>
+</view>
+<view class="cu-card case bg-white" wx:if="{{packageImg.length>0}}">
+    <view class="cu-item shadow" wx:for="{{packageImg}}" wx:key wx:if="{{index<businessImgShowNum}}">
+        <view class="image">
+            <image src="{{imgUrl}}{{item.image}}" mode="aspectFill" bindtap='previewImage' data-src='{{imgUrl}}{{item.image}}' data-list='{{packageImg}}'></image>
+            <view class="cu-bar bg-shadeBottom">
+                <text class="text-cut">介绍：{{item.introduce}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<button class="cu-btn block bg-white " wx:if="{{packageImg.length>2}}" bindtap="showMoreImg">
+    <blcok>{{packageImg.length!=businessImgShowNum?'展开更多':'收起更多'}}</blcok>
+    <text class="{{packageImg.length!=businessImgShowNum?'cuIcon-unfold':'cuIcon-fold'}} pg-text-red"></text>
+</button>
+<!-- 购买须知 -->
+<view class="cu-bar bg-white margin-top">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">购买须知</text>
+    </view>
+</view>
+<view class="cu-list menu" wx:if="{{couponList.id>0}}">
+    <view class="cu-item ">
+        <view class="content">
+            <view class="">
+                <text class="cuIcon-title">有效期:{{couponList.validitytime}}</text>
+            </view>
+            <view class="">
+                <text class="cuIcon-title">{{couponList.ranges}}</text>
+            </view>
+            <view class="">
+                <text class="cuIcon-title">{{couponList.bespeak==1?'提前预约':'无需预约'}}</text>
+            </view>
+            <view class="">
+                <text class="cuIcon-title">{{couponList.bespeak==1?'可叠加':'不可叠加'}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="cu-list menu" wx:if="{{packagesList.id>0}}">
+    <view class="cu-item ">
+        <view class="content">
+            <view class="">
+                <text class="cuIcon-title">有效期:{{packagesList.validitytime}}</text>
+            </view>
+            <view class="">
+                <text class="cuIcon-title">{{packagesList.ranges}}</text>
+            </view>
+            <view class="">
+                <text class="cuIcon-title">{{packagesList.bespeak==1?'提前预约':'无需预约'}}</text>
+            </view>
+            <view class="">
+                <text class="cuIcon-title">{{packagesList.bespeak==1?'可叠加':'不可叠加'}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 用户评价 -->
+<block wx:if="{{commentList.length>0}}">
+    <view class="cu-bar bg-white margin-top">
+        <view class="action">
+            <text class="cuIcon-titles pg-text-red"></text>
+            <text class="">用户评价({{businessScoreCount}})</text>
+        </view>
+        <view class="action">
+            <view class="text-gray text-content text-df">
+                <block wx:if="{{businessScore>0}}">
+                    <text class="cuIcon-favorfill text-red" wx:for="{{businessScore}}" wx:key></text>
+                </block>
+                <block wx:else>
+                    <text class="cuIcon-favor" wx:for="{{5}}" wx:key></text>
+                </block>
+                {{businessScore}}分
+            </view>
+        </view>
+    </view>
+    <view class="cu-list menu-avatar comment solids-top">
+        <view class="cu-item" wx:for="{{commentList}}" wx:key wx:if="{{commentList.length>0}}" wx:for-item="item1">
+            <view class="cu-avatar round" style="background-image:url({{item1.user_image}});"></view>
+            <view class="content">
+                <view class="text-grey">{{item1.user_name}}</view>
+                <view class="text-gray text-content text-df">
+                    <block wx:if="{{item1.score>0}}">
+                        <text class="cuIcon-favorfill text-red" wx:for="{{item1.score}}" wx:key></text>
+                    </block>
+                    <block wx:else>
+                        <text class="cuIcon-favor" wx:for="{{5}}" wx:key></text>
+                    </block>
+                </view>
+                <view class="text-gray text-content text-df">
+                    {{item1.content!=''?item1.content:'该用户未评价'}}
+                </view>
+                <view class="grid col-4 grid-square flex-sub">
+                    <view class="bg-img" wx:for="{{item1.list_evaluateImage}}" wx:key="{{index}}">
+                        <image src='{{imgUrl}}{{item.image}}' mode='aspectFill' bindtap='previewImage' data-src='{{imgUrl}}{{item.image}}' data-list='{{item1.list_evaluateImage}}'></image>
+                    </view>
+                </view>
+                <view class="margin-top-sm flex justify-between">
+                    <view class='cu-tag bg-blue light round'>{{item1.ids_name}}</view>
+                </view>
+            </view>
+            <view class="action">
+                <view class="text-gray text-xs">{{item1.addtime}}</view>
+            </view>
+        </view>
+    </view>
+    <button class="cu-btn block bg-white text-red" bindtap="showMoreComment">查看更多评价</button>
+</block>
+<!-- 悬浮层 -->
+<view class="cu-bar bg-black tabbar border shop cart" wx:if="{{couponList.id>0}}">
+    <view class="action">
+        <view class="text-df">
+            <text class="text-price">{{couponList.money-couponList.money_single}}</text>
+            <block wx:if='{{couponList.types == 2}}'>
+                <text class=" cu-tag line-red margin-left-xs">{{dan_zhekou}}折</text>
+            </block>
+            <block wx:else>
+                <text class="cu-tag line-red margin-left-xs">{{dan_zhekou}}折</text>
+            </block>
+        </view>
+        <view class="text-sm text-decoration padding-xs">
+            <text>原价:</text>
+            <text>{{couponList.money}}元</text>
+        </view>
+    </view>
+    <view class="margin-right-sm" bindtap="toPay" data-price='{{couponList.money-couponList.money_single}}' data-type='1' data-people='1' data-id='{{couponList.id}}' data-muser='{{couponList.muser_id}}'>
+        <button class="cu-btn bg-red round shadow-blur">立即订购</button>
+    </view>
+</view>
+<view class="cu-bar bg-black tabbar border shop cart" wx:if="{{packagesList.id>0}}">
+    <view class="action">
+        <view class="text-df">
+            <text class="text-price">{{packagesList.money_single}}</text>
+            <text class="cu-tag line-red margin-left-xs">{{dan_zhekou}}折</text>
+        </view>
+        <view class="text-sm text-decoration padding-xs">
+            <text>原价:</text>
+            <text>{{packagesList.money}}元</text>
+        </view>
+    </view>
+    <view class="margin-right-sm" bindtap="toPay" data-price='{{packagesList.money_single}}' data-type='2' data-people='1' data-id='{{packagesList.id}}' data-muser='{{packagesList.muser_id}}'>
+        <button class="cu-btn bg-red round shadow-blur">立即订购</button>
+    </view>
+</view>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

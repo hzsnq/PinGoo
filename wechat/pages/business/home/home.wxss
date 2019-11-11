@@ -1,4 +1,10 @@
 /* pages/business/home/home.wxss */
+
+.cu-bar {
+    min-height: 102rpx;
+}
+
+
 .card-swiper {
     height: 300rpx !important;
 }

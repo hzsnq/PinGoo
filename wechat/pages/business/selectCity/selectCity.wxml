@@ -1,5 +1,5 @@
 <!-- pages/business/selectCity/selectCity.wxml -->
-<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">选择城市</view>
 </cu-custom>
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
