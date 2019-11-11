@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "business": "/pages/business/home/home",
-    "classify": "/pages/classify/home/home",
-    "order": "/pages/order/home/home",
-    "about": "/pages/about/home/home"
-  }
-}

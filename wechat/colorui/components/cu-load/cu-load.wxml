@@ -1,1 +1,0 @@
-<view class="cu-load  {{isLoad?'loading':'over'}} {{bgColor}}" wx:if="{{isShow}}"></view>
