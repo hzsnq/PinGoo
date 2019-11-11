@@ -1,0 +1,20 @@
+/* pages/business/home/home.wxss */
+
+.cu-bar {
+    min-height: 102rpx;
+}
+
+
+.card-swiper {
+    height: 300rpx !important;
+}
+
+.card-swiper swiper-item {
+    padding: 10px 0 20px;
+}
+
+.cu-list.grid.no-border>.cu-item .home_icon {
+    width: 70rpx;
+    height: 70rpx;
+    margin: 0 auto;
+}

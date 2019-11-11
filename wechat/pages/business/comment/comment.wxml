@@ -1,0 +1,44 @@
+<!-- pages/business/comment/comment.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">评论列表</view>
+</cu-custom>
+<scroll-view style="height:calc(100vh - {{CustomBar}}px)" scroll-y="{{true}}" bindscrolltolower="loadMore">
+    <block wx:if="{{commentList.length>0}}">
+        <view class="cu-list menu-avatar comment solids-top">
+            <view class="cu-item align-start" wx:for="{{commentList}}" wx:key wx:for-item="item1">
+                <view class="cu-avatar round" style="background-image:url({{item1.user_image}});"></view>
+                <view class="content">
+                    <view class="text-grey">{{item1.user_name}}</view>
+                    <view class="text-gray text-content text-df">
+                        <block wx:if="{{item1.score>0}}">
+                            <text class="cuIcon-favorfill text-red" wx:for="{{item1.score}}" wx:key></text>
+                        </block>
+                        <block wx:else>
+                            <text class="cuIcon-favor" wx:for="{{5}}" wx:key></text>
+                        </block>
+                    </view>
+                    <view class="text-gray text-content text-df">
+                        {{item1.content!=''?item1.content:'该用户未评价'}}
+                    </view>
+                    <view class="grid col-4 grid-square flex-sub">
+                        <view class="bg-img" wx:for="{{item1.list_evaluateImage}}" wx:key="{{index}}">
+                            <image src='{{imgUrl}}{{item.image}}' mode='aspectFill' bindtap='previewImage' data-src='{{imgUrl}}{{item.image}}' data-list='{{item1.list_evaluateImage}}'></image>
+                        </view>
+                    </view>
+                    <view class="margin-top-sm flex justify-between">
+                        <view class='cu-tag bg-blue light round'>{{item1.ids_name}}</view>
+                    </view>
+                </view>
+                <view class="action">
+                    <view class="text-gray text-df">{{item1.addtime}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- 加载框 -->
+        <cu-load bgColor="{{bgColor}}" isShow="{{isShow}}" isLoad="{{isLoad}}"></cu-load>
+    </block>
+</scroll-view>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

@@ -1,0 +1,112 @@
+<cu-custom bgColor="bg-gradual-red">
+    <view slot="content" class="text-white">拼Goo</view>
+</cu-custom>
+<scroll-view style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-y="{{true}}" scroll-top="{{scrollTo}}" bindscrolltolower="loadMore">
+    <view id="index-top">
+        <!-- 搜索框 -->
+        <view class="cu-bar search bg-gradual-red">
+            <view class="cu-avatar round" style="background-image:url(https://image.weilanwl.com/img/square-2.jpg);"></view>
+            <view class="search-form round" bindtap="toSearch">
+                <text class="cuIcon-search"></text>
+                <text class="text-grey">搜索商铺、美食</text>
+            </view>
+            <view class="action" bindtap="toSelectCity">
+                <text>{{cityName}}</text>
+                <text class="cuIcon-triangledownfill"></text>
+            </view>
+        </view>
+        <!-- banner -->
+        <swiper class="card-swiper square-dot bg-gradual-red-90" indicator-dots="{{true}}" circular="{{true}}" autoplay="{{true}}" interval="5000" duration="500" bindchange="cardSwiper">
+            <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+                <view class="swiper-item" bindtap="toView">
+                    <image src="{{swiperList.img?swiperList.img:defaultImg}}" mode="widthFix"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+        <!-- 分类swiper -->
+        <swiper class="screen-swiper bg-white square-dot" indicator-dots="{{true}}" circular="{{true}}" autoplay="{{false}}" duration="500" indicator-color="#8799a3" indicator-active-color="#000000">
+            <swiper-item>
+                <view class="cu-list grid col-4 no-border">
+                    <view class='cu-item' wx:for="{{classifyList}}" wx:key wx:if='{{item.id<=9}}' bindtap="goToClassify" id='{{item.id}}' data-id='{{index}}'>
+                        <image src="{{serverImgUrl}}{{item.image}}" class="home_icon" />
+                        <text>{{item.sort_name}}</text>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item>
+                <view class="cu-list grid col-4 no-border">
+                    <view class='cu-item' wx:for="{{classifyList}}" wx:key wx:if='{{item.id>9}}' bindtap="goToClassify" id='{{item.id}}' data-id='{{index}}'>
+                        <image src="{{serverImgUrl}}{{item.image}}" class="home_icon" />
+                        <text>{{item.sort_name}}</text>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <!-- 推荐商家标题 -->
+        <view class="cu-bar bg-white">
+            <view class="action">
+                <text class="cuIcon-titles pg-text-red"></text>
+                <text class="text-xl text-bold">推荐商家</text>
+            </view>
+        </view>
+    </view>
+    <!-- 推荐商家列表 -->
+    <view class="cu-card article no-card bg-white pg-index-list" wx:if="{{contentListShow}}">
+        <view wx:for="{{contentList}}" wx:key class="cu-item shadow" style='animation: show 1.2s 1;-webkit-animation: show 1.2s 1;' bindtap="toChild" id="{{item.id}}">
+            <view class="content">
+                <image src="{{imgUrl}}{{item.coverimg}}" mode="aspectFill" lazy-load="{{true}}"></image>
+                <view class="desc">
+                    <view class='text-lg text-black'>{{item.name}}</view>
+                    <view class='text-sm padding-tb-xs'>
+                        <block wx:if="{{item.score_fraction>0}}">
+                            <text class="cuIcon-favorfill text-red" style="letter-spacing:2rpx">
+                                <block>{{item.score_fraction>5?5.0:item.score_fraction}}</block>
+                            </text>
+                        </block>
+                        <block wx:else>
+                            <text class="cuIcon-favorfill">无评分</text>
+                        </block>
+                        人均:
+                        <text class="text-price">{{item.average}}</text>
+                    </view>
+                    <view class='text-sm text-cut padding-tb-xs' style="width:220px">
+                        {{item.address}}
+                    </view>
+                    <view class='text-sm pg-position'>{{item.distance}}km</view>
+                    <view class="padding-tb-xs">
+                        <block wx:if='{{item.list_coupon.length > 0}}'>
+                            <!-- <view class='cu-tag bg-red light sm round'>券</view> -->
+                            <block wx:for='{{item.list_coupon}}' wx:key>
+                                <block wx:if='{{item.types == 1}}'>
+                                    <view class='cu-tag bg-red light sm round'>
+                                        满 {{item.money}}减{{item.money_many}}
+                                    </view>
+                                </block>
+                                <block wx:else>
+                                    <view class='cu-tag bg-red light sm round'>
+                                        满 {{item.money}}打{{item.money_many}}折
+                                    </view>
+                                </block>
+                            </block>
+                        </block>
+                        <block wx:if='{{item.list_packages.length > 0}}'>
+                            <!-- <view class='cu-tag bg-green light sm round'>团</view> -->
+                            <block wx:for='{{item.list_packages}}' wx:key>
+                                <view class='cu-tag bg-green light sm round'>
+                                    {{item.package_name}}
+                                </view>
+                            </block>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 加载框 -->
+    <cu-load bgColor="{{bgColor}}" isShow="{{isShow}}" isLoad="{{isLoad}}"></cu-load>
+</scroll-view>
+<view class='cu-tabbar-height'></view>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

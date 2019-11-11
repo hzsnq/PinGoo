@@ -1,0 +1,9 @@
+<view class="cu-modal {{loadModal?'show':''}}" wx:if="{{loadModal}}">
+    <view class='cu-load load-modal pg-load-modal'>
+        <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+        <image src='/images/pingo.png' class='png' mode='aspectFit'></image>
+        <view class='gray-text'>
+            <slot name="modal-text"></slot>
+        </view>
+    </view>
+</view>

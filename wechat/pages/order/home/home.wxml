@@ -1,0 +1,3 @@
+<cu-custom bgColor="bg-gradual-red">
+    <view slot="content" class="text-white">订单</view>
+</cu-custom>

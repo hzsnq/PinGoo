@@ -1,0 +1,13 @@
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+page {
+    background: rgb(255, 123, 13);
+}
+
+.bg {
+    width: 100%;
+    height: 100vh;
+    background: url("https://iqqia.com/wximage/zhuanxianjin_bj.png") no-repeat;
+    background-size: cover;
+}

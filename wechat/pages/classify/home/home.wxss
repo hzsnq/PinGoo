@@ -1,0 +1,7 @@
+/* pages/classify/home/home.wxss */
+.pg-subnav {
+    width: 100%;
+    position: absolute;
+    top: 98px;
+    z-index: 999;
+}
