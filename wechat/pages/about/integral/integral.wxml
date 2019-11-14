@@ -1,0 +1,8 @@
+<!-- pages/about/integral/integral.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">积分</view>
+</cu-custom>
+<view class="flex-sub text-center bg-gradual-red-90 text-white">
+    <view class="text-xsl padding-top-sm">{{integralCount}}</view>
+    <view class="padding-sm">当前积分</view>
+</view>

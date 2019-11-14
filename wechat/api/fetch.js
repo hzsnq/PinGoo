@@ -1,5 +1,4 @@
 const _promise = require('../libs/promise/es6-promise.min.js');
-// const app = getApp();
 
 /**
  * 抓取远端API的结构
@@ -18,7 +17,6 @@ module.exports = function (api, path, params) {
 
         function appNetworkResponseReject(response) {
             console.log('大事不好了');
-            // app.showTips('网络错误');
             console.log(response)
             {
                 if (response.data && response.data.data) {

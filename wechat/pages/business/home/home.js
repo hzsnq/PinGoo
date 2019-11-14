@@ -189,7 +189,7 @@ Component({
         that.setData({
           cityName: cname
         })
-        console.log(that.data.contentList.length, '数组长度')
+        // console.log(that.data.contentList.length, '数组长度')
         that.getContentList(id, location);
       }
     },
@@ -294,6 +294,12 @@ Component({
       })
     },
     toView() {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login();
+        return
+      }
       wx.navigateTo({
         url: "/pages/about/recommend/recommend"
       })

@@ -1,0 +1,7 @@
+<!-- pages/about/resPackets/resPackets.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">红包</view>
+</cu-custom>
+<page-default isShow="{{!packetsListShow}}">
+    <view slot="content">还没有红包</view>
+</page-default>

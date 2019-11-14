@@ -1,0 +1,10 @@
+/* pages/about/aboutUs/aboutUs.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.png {
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 50%;
+    border: solid 2px #f5f5f5;
+}

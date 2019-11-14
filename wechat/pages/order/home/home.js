@@ -23,6 +23,7 @@ Component({
     },
     detached() {
       console.log("在组件实例被从页面节点树移除时执行")
+      app.globalData.dataStatus = false;
     },
     error() {
       console.log("每当组件方法抛出错误时执行")

@@ -1,0 +1,7 @@
+/* pages/about/feedback/feedback.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.cu-form-group textarea {
+    min-height: 700rpx;
+}

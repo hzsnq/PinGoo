@@ -6,6 +6,13 @@
     "pages/about/home/home",
     "pages/about/recommend/recommend",
     "pages/about/collection/collection",
+    "pages/about/settled/settled",
+    "pages/about/message/message",
+    "pages/about/businessSettled/businessSettled",
+    "pages/about/feedback/feedback",
+    "pages/about/aboutUs/aboutUs",
+    "pages/about/resPackets/resPackets",
+    "pages/about/integral/integral",
 
     "pages/order/home/home",
 
@@ -30,7 +37,8 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom/cu-custom",
     "cu-load": "/colorui/components/cu-load/cu-load",
-    "load-modal": "/colorui/components/load-modal/load-modal"
+    "load-modal": "/colorui/components/load-modal/load-modal",
+    "page-default": "/colorui/components/page-default/page-default"
   },
   "permission": {
     "scope.userLocation": {

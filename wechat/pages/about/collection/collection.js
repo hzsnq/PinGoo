@@ -10,6 +10,7 @@ Page({
     contentList: [],
     contentListShow: false,
     imgUrl: app.globalData.imgUrl,
+    show: true
   },
 
   /**
@@ -26,10 +27,15 @@ Page({
     params.user_id = user_id;
     API.APIUser.CollectionQueryAll(params).then(d => {
       console.log(d.data.list_shops)
-      if (d.data.code == 200) {
+      if (d.data.code == 200 && d.data.list_shops.length != 0) {
         this.setData({
           contentList: d.data.list_shops,
           contentListShow: true
+        })
+      } else {
+        this.setData({
+          contentList: d.data.list_shops,
+          contentListShow: false
         })
       }
     })

@@ -1,0 +1,7 @@
+/* pages/about/businessSettled/businessSettled.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.cu-form-group .title {
+    min-width: calc(4em + 30rpx);
+}

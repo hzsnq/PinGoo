@@ -1,0 +1,29 @@
+<!-- pages/about/aboutUs/aboutUs.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">关于我们</view>
+</cu-custom>
+<view class="flex-sub text-center bg-gradual-red-90 text-white">
+    <view class="text-xsl padding-top-sm">
+        <image src='/images/pingo.png' class='png' mode='aspectFit'></image>
+    </view>
+    <view class="padding-sm">拼Goo</view>
+</view>
+<view class="cu-list menu">
+    <view class="cu-item arrow">
+        <view class="content">
+            <text class="text-black">用户协议</text>
+        </view>
+    </view>
+    <view class="cu-item">
+        <view class="content">
+            <text class="text-blcack">商务合作</text>
+        </view>
+        <view class="action">wx:pinggoo888</view>
+    </view>
+    <view class="cu-item">
+        <view class="content">
+            <text class="text-black">联系客服</text>
+        </view>
+        <view class="action">wx:pinggoo888</view>
+    </view>
+</view>

@@ -17,6 +17,7 @@ Component({
     //页面参数
     toView: 'toView1',
     contentList: [],
+    contentListShow: false,
     scrollTo: 0,
     isShowModal: false,
     classifyList: null,
@@ -55,8 +56,10 @@ Component({
       })
       this.data.classifyList = wx.getStorageSync("classify_list");
       if (this.data.classifyList.length > 1) {
-        // console.log(this.data.classifyList)
         console.log('判断缓存')
+        // if (!this.data.contentListShow) {
+        //   this.showClassify();
+        // }
       } else {
         API.APIBusiness.SortQueryAll().then(d => {
           // console.log(d)

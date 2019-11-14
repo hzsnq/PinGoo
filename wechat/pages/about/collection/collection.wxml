@@ -2,6 +2,9 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">我的收藏</view>
 </cu-custom>
+<page-default isShow="{{!contentListShow}}">
+    <view slot="content">还没有收藏</view>
+</page-default>
 <view class="cu-card article no-card bg-white pg-index-list " wx:if="{{contentListShow}}">
     <view wx:for="{{contentList}}" wx:key class="cu-item padding-top shadow {{modalName=='move-box-'+ index?'move-cur':''}}" style='animation: show 1.2s 1;-webkit-animation: show 1.2s 1;' bindtouchstart='ListTouchStart' bindtouchmove='ListTouchMove' bindtouchend='ListTouchEnd' data-target="move-box-{{index}}">
         <view class="content" bindtap="toChild" id="{{item.shops_id}}">

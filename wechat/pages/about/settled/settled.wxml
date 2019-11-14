@@ -1,0 +1,6 @@
+<!-- pages/about/settled/settled.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">商家入驻</view>
+</cu-custom>
+<image src='{{serverImgUrl}}ruzhu_tu2.png' class='settled_image'></image>
+<view class="settled" bindtap="toSettled">立即入驻</view>

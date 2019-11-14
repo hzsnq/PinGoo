@@ -1,0 +1,6 @@
+<view class="page-default" wx:if='{{isShow}}' style="height:calc(100vh - {{CustomBar}}px)">
+    <image class="page-default-cover png" src="/images/empty_bookmarks.png"></image>
+    <view class='text-xl padding-lg text-black'>
+        <slot name="content"></slot>
+    </view>
+</view>

@@ -2,4 +2,36 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">商家信息</view>
 </cu-custom>
-<view class="bg"></view>
+<view class="bg">
+    <view class="bg-white recommend-code text-black">
+        <image src="{{userInfo.user_erweima}}" class="code-img" />
+        <view class='padding-bottom'>您的专属邀请码:{{userInfo.user.pid}}</view>
+        <view class='padding-bottom' data-text='{{userInfo.user.pid}}' bindtap='copyClick'>
+            复制邀请码
+        </view>
+    </view>
+    <view class="cu-list menu-avatar bg-white recommend-code-tx">
+        <view class="cu-item">
+            <image class="cu-avatar" src="../../../images/zhuan_xin.png" />
+            <view class="content margin-left">
+                <view class="text-df padding-tb-xs">已获奖励</view>
+                <view class="text-df text-red">0</view>
+            </view>
+            <view class="action margin-right">
+                <view class="cu-tag round bg-red padding-lr ">提现</view>
+            </view>
+        </view>
+    </view>
+    <view class='xize bg-white text-center'>
+        <view class='cu-tag round pg-recommend-title text-white margin-tb-sm'>邀请商家入驻</view>
+        <view class=''>{{text.text1}}</view>
+        <view class=''>{{text.text2}}</view>
+        <view class=''>{{text.text3}}</view>
+        <view class=''>{{text.text4}}</view>
+        <view class='cu-tag round pg-recommend-title2 text-white margin-tb-sm'>邀请用户下单</view>
+        <view class=''>{{text.text5}}</view>
+        <view class=''>{{text.text6}}</view>
+        <view class=''>{{text.text7}}</view>
+        <view class=''>{{text.text8}}</view>
+    </view>
+</view>

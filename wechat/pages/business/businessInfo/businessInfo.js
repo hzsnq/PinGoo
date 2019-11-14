@@ -48,7 +48,7 @@ Page({
     params.id = options.id;
     API.APIBusiness.ShopsQueryId(params).then(d => {
       console.log(d, '商家全部信息')
-      console.log(d.data.shops.id, d.data.shops.muser_id)
+      // console.log(d.data.shops.id, d.data.shops.muser_id)
       let list = [];
       list.push({ image: d.data.shops.coverimg })
       this.setData({
@@ -190,7 +190,7 @@ Page({
     })
     let user_id = wx.getStorageSync("user_id");
     let muser_id = this.data.businessInfo.id;
-    console.log(muser_id)
+    // console.log(muser_id)
     let params = {};
     params.user_id = user_id;
     params.shops_id = muser_id;

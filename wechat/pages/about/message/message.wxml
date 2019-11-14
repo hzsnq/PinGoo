@@ -1,0 +1,7 @@
+<!-- pages/about/message/message.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">用户消息</view>
+</cu-custom>
+<page-default isShow="{{!messageListShow}}">
+    <view slot="content">还没有消息</view>
+</page-default>

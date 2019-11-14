@@ -10,14 +10,17 @@ const fetch = require('./fetch');
 function SortQueryAll(params) {
     return fetch(CONFIG.API_HOST, 'SortQueryAll', params);
 }
+
 //查询子分类接口
 function SorterQueryAll(params) {
     return fetch(CONFIG.API_HOST, 'SorterQueryAll', params);
 }
+
 //首页商家列表
 function ShopsRecommendList(params) {
     return fetch(CONFIG.API_HOST, 'ShopsRecommendList', params);
 }
+
 //商家分类列表
 function ShopsScreeningList(params) {
     return fetch(CONFIG.API_HOST, 'ShopsScreeningList', params);
@@ -26,6 +29,7 @@ function ShopsScreeningList(params) {
 function ShopsRandomList(params) {
     return fetch(CONFIG.API_HOST, 'ShopsRandomList', params);
 }
+
 //商家详情
 function ShopsQueryId(params) {
     return fetch(CONFIG.API_HOST, 'ShopsQueryId', params);
@@ -77,6 +81,11 @@ function ShopsEvaluateList(params) {
     return fetch(CONFIG.API_HOST, 'ShopsEvaluateList', params);
 }
 
+//添加商家
+function ShopsEnter(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsEnter', params);
+}
+
 module.exports = {
     SortQueryAll: SortQueryAll,
     ShopsRecommendList: ShopsRecommendList,
@@ -93,5 +102,6 @@ module.exports = {
     FightAdd: FightAdd,
     xiadan: xiadan,
     IdsEvaluateList: IdsEvaluateList,
-    ShopsEvaluateList: ShopsEvaluateList
+    ShopsEvaluateList: ShopsEvaluateList,
+    ShopsEnter: ShopsEnter
 };
