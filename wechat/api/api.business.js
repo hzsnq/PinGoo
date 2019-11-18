@@ -86,6 +86,11 @@ function ShopsEnter(params) {
     return fetch(CONFIG.API_HOST, 'ShopsEnter', params);
 }
 
+//商家登录后台
+function MuserLogin(params) {
+    return fetch(CONFIG.API_HOST, 'MuserLogin', params);
+}
+
 module.exports = {
     SortQueryAll: SortQueryAll,
     ShopsRecommendList: ShopsRecommendList,
@@ -103,5 +108,6 @@ module.exports = {
     xiadan: xiadan,
     IdsEvaluateList: IdsEvaluateList,
     ShopsEvaluateList: ShopsEvaluateList,
-    ShopsEnter: ShopsEnter
+    ShopsEnter: ShopsEnter,
+    MuserLogin: MuserLogin
 };

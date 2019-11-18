@@ -3,7 +3,7 @@
     <image class="mine-bg" src='/images/head_01.png' mode='widthFix' style='width:100%'></image>
     <image class="mine-cover png" src="{{userInfo.avatarUrl ?  userInfo.avatarUrl : '/images/e0_head.png'}}" mode='widthFix'></image>
     <view class='text-lg padding-df mine-name'>{{userInfo.nickName?userInfo.nickName:'未登录'}}</view>
-    <view class='mine-sjzx' bindtap='sjzx'>商家中心</view>
+    <view class='mine-sjzx' bindtap='toBusinessAdmin'>商家中心</view>
 </view>
 <view class='padding-xs flex text-center text-grey bg-white shadow-warp mine-list'>
     <view class='flex flex-sub flex-direction solid-right' data-url='/pages/about/resPackets/resPackets' bindtap='tapListItem'>

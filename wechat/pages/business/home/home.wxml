@@ -42,6 +42,8 @@
                 </view>
             </swiper-item>
         </swiper>
+        <!-- banner广告 -->
+        <ad unit-id="adunit-7c4c2d2415e851e8"></ad>
         <!-- 推荐商家标题 -->
         <view class="cu-bar bg-white">
             <view class="action">

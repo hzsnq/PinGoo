@@ -13,6 +13,9 @@
     "pages/about/aboutUs/aboutUs",
     "pages/about/resPackets/resPackets",
     "pages/about/integral/integral",
+    "pages/about/businessLogin/businessLogin",
+    "pages/about/businessAdmin/businessAdmin",
+
 
     "pages/order/home/home",
 

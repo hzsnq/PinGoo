@@ -53,6 +53,7 @@ Page({
   },
   //输入框方法
   bindInput: function (e) {
+    console.log(e)
     let itemName = e.currentTarget.dataset.name;
     let itemData = e.detail.value
     let formData = this.data.formData;
@@ -189,11 +190,34 @@ Page({
   //添加商家
   insertBusiness: function (path) {
     console.log(this.data.formData, path)
-    this.setData({
-      isShowModal: false
+    let formData = this.data.formData
+    let params = {};
+    params.name = formData.businessName;
+    params.address = formData.businessAddress;
+    params.industry = formData.businessTrade;
+    params.username = formData.businessUserName;
+    params.phone = formData.businessUserTel;
+    params.yy_image = path;
+    params.pid = ''
+    API.APIBusiness.ShopsEnter(params).then(d => {
+      console.log(d.data)
+      if (d.data.code == 200) {
+        this.setData({
+          isShowModal: false
+        })
+        app.showTips(d.data.message);
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 2
+          })
+        }, 2500)
+      } else {
+        this.setData({
+          isShowModal: false
+        })
+        app.showTips('入驻失败');
+      }
     })
-    //ShopsEnter插入方法
-    app.showTips('暂时未把数据插入')
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

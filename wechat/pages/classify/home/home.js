@@ -1,6 +1,7 @@
 // pages/classify/home/home.js
 const app = getApp();
 const API = require('../../../api/api.endpoint.js');
+let interstitialAd = null;
 Component({
   options: {
     addGlobalClass: true,
@@ -51,6 +52,18 @@ Component({
     },
     attached() {
       console.log("在组件实例进入页面节点树时执行")
+      if (wx.createInterstitialAd) {
+        interstitialAd = wx.createInterstitialAd({ adUnitId: 'adunit-63be1fb43ebfa2e6' })
+        interstitialAd.onLoad(() => {
+          console.log('onLoad event emit')
+        })
+        interstitialAd.onError((err) => {
+          console.log('onError event emit', err)
+        })
+        interstitialAd.onClose((res) => {
+          console.log('onClose event emit', res)
+        })
+      }
       this.setData({
         isShowModal: true,
       })
@@ -199,6 +212,9 @@ Component({
           // console.log(that.data.contentList[0].score_fraction)
         } else if (d.data.status == 400) {
           console.log('无数据')
+          interstitialAd.show().catch((err) => {
+            console.error(err)
+          })
           that.setData({
             isShow: true,
             isLoad: false,

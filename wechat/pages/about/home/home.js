@@ -50,6 +50,7 @@ Component({
 
   },
   methods: {
+    //点击进入
     tapListItem: function (e) {
       if (app.isLogin()) {
         console.log('登陆啦')
@@ -67,6 +68,7 @@ Component({
       if (app.isLogin()) {
         console.log('登陆啦')
       } else {
+        app.showTips('未登录')
         return
       }
       let user = wx.getStorageSync("user_info")
@@ -85,5 +87,27 @@ Component({
         }
       })
     },
+    //打开商家后台
+    toBusinessAdmin: function () {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login();
+        return
+      }
+      let muser_id = wx.getStorageSync("muser_key");
+      if (muser_id === null || muser_id === undefined || muser_id === '') {
+        app.showTips('未登录商家后台');
+        setTimeout(function () {
+          wx.navigateTo({
+            url: '/pages/about/businessLogin/businessLogin'
+          })
+        }, 1000);
+      } else {
+        wx.navigateTo({
+          url: "/pages/about/businessAdmin/businessAdmin"
+        })
+      }
+    }
   }
 })

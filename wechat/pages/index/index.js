@@ -3,6 +3,7 @@ const API = require('../../api/api.endpoint.js');
 const mapFile = require('../../libs/map/amap-wx.js')
 const uitls = require('../../utils/util.js')
 const app = getApp();
+let interstitialAd = null;
 
 Page({
   data: {
@@ -20,6 +21,23 @@ Page({
     // } else {
     //   app.login()
     // }
+    // 在页面中定义插屏广告
+
+    // 在适合的场景显示插屏广告
+
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({ adUnitId: 'adunit-63be1fb43ebfa2e6' })
+      interstitialAd.onLoad(() => {
+        console.log('onLoad event emit')
+      })
+      interstitialAd.onError((err) => {
+        console.log('onError event emit', err)
+      })
+      interstitialAd.onClose((res) => {
+        console.log('onClose event emit', res)
+      })
+    }
+
     console.log(options.id, options.page_cur, 'onload判断是否有page_cur')
     //判断是否有参数
     if (options.id != undefined && options.page_cur != undefined && options.item_id != undefined) {
@@ -55,7 +73,13 @@ Page({
           API.APICity.CityName(cityName).then(d => {
             if (d.data.code == 200) {
               wx.setStorageSync("city_id", d.data.city.id);
-              console.log(d.data.city.id, 'city_id', '暂时获取到的city_id都为1')
+              console.log(d.data.city.id, 'city_id', '暂时获取到的city_id都为1');
+              //显示广告，暂时关闭
+              // setTimeout(function () {
+              //   interstitialAd.show().catch((err) => {
+              //     console.error(err)
+              //   })
+              // }, 1000);
               if (app.globalData.dataStatus) {
                 console.log('首页内容已加载')
                 return
