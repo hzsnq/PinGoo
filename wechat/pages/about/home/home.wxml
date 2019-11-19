@@ -6,7 +6,7 @@
     <view class='mine-sjzx' bindtap='toBusinessAdmin'>商家中心</view>
 </view>
 <view class='padding-xs flex text-center text-grey bg-white shadow-warp mine-list'>
-    <view class='flex flex-sub flex-direction solid-right' data-url='/pages/about/resPackets/resPackets' bindtap='tapListItem'>
+    <view class='flex flex-sub flex-direction solid-right' data-url='/pages/about/redPackets/redPackets' bindtap='tapListItem'>
         <view class="text-xxl text-grey">
             {{userParameters.redscount?userParameters.redscount:0}}
         </view>

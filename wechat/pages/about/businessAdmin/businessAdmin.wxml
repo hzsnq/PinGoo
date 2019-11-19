@@ -2,3 +2,53 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">商家中心</view>
 </cu-custom>
+<view class="bg-gradual-red-90 padding">
+    <view class="cu-list menu ">
+        <view class="cu-item bg-white">
+            <view class="cu-avatar radius lg margin-tb" style="background-image:url({{businessInfo.coverimg}});"></view>
+            <view class="content margin-left">
+                <view class="">{{businessInfo.name}}</view>
+                <view class=" text-sm">{{businessInfo.address}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="flex admin-input margin-top">
+        <input placeholder="请输入后四位验证" maxlength="4" placeholder-style="color:#fff" type="number" bindinput="verifyInput" value="{{verifyCode}}" />
+        <view class="verify-btn" bindtap="verifyBtn">验证</view>
+    </view>
+    <view class="flex padding-top">
+        <view class="verify-text" bindtap="verifyCode">
+            <text class="cuIcon-scan"></text>
+            扫码验证
+        </view>
+        <view class="verify-text" bindtap="tapListItem" data-path='/pages/about/verifyHistory/verifyHistory'>
+            <text class="cuIcon-footprint"></text>
+            验证历史
+        </view>
+    </view>
+</view>
+<view class="cu-list grid col-3 ">
+    <view class="cu-item" data-path="/pages/about/aboutUs/aboutUs">
+        <view class="text-black">{{businessInfo.integral}}</view>
+        <text>积分</text>
+    </view>
+    <view class="cu-item" data-path="/pages/about/aboutUs/aboutUs">
+        <view class="text-black">{{businessInfo.income}}</view>
+        <text>收入余额</text>
+    </view>
+    <view class="cu-item" data-path="/pages/about/aboutUs/aboutUs">
+        <view class="text-black">{{businessInfo.shoucang}}</view>
+        <text>收藏</text>
+    </view>
+</view>
+<view class="cu-list grid col-3 ">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key data-path="{{item.path}}">
+        <view class="">
+            <image src="{{item.icon}}" class="cu-item-img" />
+        </view>
+        <text>{{item.name}}</text>
+    </view>
+</view>
+<view class="padding-xl">
+    <button class="cu-btn block bg-red lg">退出登录</button>
+</view>

@@ -91,6 +91,21 @@ function MuserLogin(params) {
     return fetch(CONFIG.API_HOST, 'MuserLogin', params);
 }
 
+//商家信息
+function MuserLoginInfo(params) {
+    return fetch(CONFIG.API_HOST, 'MuserLoginInfo', params);
+}
+
+//商家模糊查询劵码内容接口
+function ShopsFightLooker(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsFightLooker', params);
+}
+
+//验证记录查询
+function ShopsFightVerificationRecord(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsFightVerificationRecord', params);
+}
+
 module.exports = {
     SortQueryAll: SortQueryAll,
     ShopsRecommendList: ShopsRecommendList,
@@ -109,5 +124,8 @@ module.exports = {
     IdsEvaluateList: IdsEvaluateList,
     ShopsEvaluateList: ShopsEvaluateList,
     ShopsEnter: ShopsEnter,
-    MuserLogin: MuserLogin
+    MuserLogin: MuserLogin,
+    MuserLoginInfo: MuserLoginInfo,
+    ShopsFightLooker: ShopsFightLooker,
+    ShopsFightVerificationRecord: ShopsFightVerificationRecord
 };

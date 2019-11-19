@@ -1,3 +1,38 @@
 /* pages/about/businessAdmin/businessAdmin.wxss */
 @import "../../../colorui/main.wxss";
 @import "../../../colorui/icon.wxss";
+
+.admin-input {
+    background: #dc2a44;
+    overflow: hidden;
+    border-radius: 10rpx;
+    height: 86rpx;
+}
+
+.admin-input input {
+    height: 86rpx;
+    padding-left: 28rpx;
+}
+
+.verify-btn {
+    line-height: 86rpx;
+    margin-left: auto;
+    background: #fff;
+    color: #dc2a44;
+    padding: 0 20rpx;
+    width: 15%;
+}
+
+.verify-text+.verify-text {
+    border-left: 1px solid #ff6f86;
+}
+
+.verify-text {
+    width: 50%;
+    text-align: center;
+}
+
+.cu-item-img {
+    width: 88rpx;
+    height: 88rpx;
+}

@@ -11,11 +11,11 @@
     "pages/about/businessSettled/businessSettled",
     "pages/about/feedback/feedback",
     "pages/about/aboutUs/aboutUs",
-    "pages/about/resPackets/resPackets",
+    "pages/about/redPackets/redPackets",
     "pages/about/integral/integral",
     "pages/about/businessLogin/businessLogin",
     "pages/about/businessAdmin/businessAdmin",
-
+    "pages/about/verifyHistory/verifyHistory",
 
     "pages/order/home/home",
 
