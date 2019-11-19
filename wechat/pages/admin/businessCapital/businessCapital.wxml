@@ -1,0 +1,4 @@
+<!-- pages/admin/businessCapital/businessCapital.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">资金管理</view>
+</cu-custom>

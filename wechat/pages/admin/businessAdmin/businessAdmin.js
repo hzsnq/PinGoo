@@ -11,23 +11,23 @@ Page({
     imgUrl: app.globalData.imgUrl,
     iconList: [{
       icon: '../../../images/yan(1).png',
-      path: '/pages/about/aboutUs/aboutUs',
+      path: '/pages/admin/businessDecoration/businessDecoration',
       name: '店铺信息'
     }, {
       icon: '../../../images/yan(2).png',
-      path: '/pages/about/aboutUs/aboutUs',
+      path: '/pages/admin/businessCoupons/businessCoupons',
       name: '优惠券'
     }, {
       icon: '../../../images/yan(3).png',
-      path: '/pages/about/aboutUs/aboutUs',
+      path: '/pages/admin/businessPackage/businessPackage',
       name: '团购套餐'
     }, {
       icon: '../../../images/yan(8).png',
-      path: '/pages/about/aboutUs/aboutUs',
+      path: '/pages/admin/businessCapital/businessCapital',
       name: '资金管理'
     }, {
       icon: '../../../images/yan(7).png',
-      path: '/pages/about/aboutUs/aboutUs',
+      path: '/pages/admin/businessComment/businessComment',
       name: '评价管理'
     }, {
       icon: '../../../images/yan(9).png',

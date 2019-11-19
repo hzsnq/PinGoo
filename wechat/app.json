@@ -21,6 +21,11 @@
     "pages/admin/businessIncome/businessIncome",
     "pages/admin/businessDetailed/businessDetailed",
     "pages/admin/businessCollection/businessCollection",
+    "pages/admin/businessDecoration/businessDecoration",
+    "pages/admin/businessCoupons/businessCoupons",
+    "pages/admin/businessPackage/businessPackage",
+    "pages/admin/businessCapital/businessCapital",
+    "pages/admin/businessComment/businessComment",
 
     "pages/order/home/home",
 

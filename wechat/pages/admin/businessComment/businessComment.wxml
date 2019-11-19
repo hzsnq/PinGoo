@@ -1,0 +1,4 @@
+<!-- pages/admin/businessComment/businessComment.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">评价管理</view>
+</cu-custom>

@@ -1,0 +1,4 @@
+<!-- pages/admin/businessCoupons/businessCoupons.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">优惠券管理</view>
+</cu-custom>
