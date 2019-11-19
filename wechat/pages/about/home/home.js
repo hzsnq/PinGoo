@@ -100,12 +100,12 @@ Component({
         app.showTips('未登录商家后台');
         setTimeout(function () {
           wx.navigateTo({
-            url: '/pages/about/businessLogin/businessLogin'
+            url: '/pages/admin/businessLogin/businessLogin'
           })
         }, 1000);
       } else {
         wx.navigateTo({
-          url: "/pages/about/businessAdmin/businessAdmin"
+          url: "/pages/admin/businessAdmin/businessAdmin"
         })
       }
     }

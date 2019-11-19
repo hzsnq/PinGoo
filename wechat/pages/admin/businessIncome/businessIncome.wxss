@@ -1,0 +1,12 @@
+/* pages/about/businessIncome/businessIncome.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.cu-list.menu>.cu-item {
+    background-image: linear-gradient(90deg, #f43f3b, #ec008c);
+    color: var(--white);
+}
+
+.cu-list.menu>.cu-item.arrow:before {
+    color: var(--white);
+}

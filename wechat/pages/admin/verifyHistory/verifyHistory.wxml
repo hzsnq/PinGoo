@@ -1,0 +1,33 @@
+<!-- pages/about/verifyHistory/verifyHistory.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">验证记录</view>
+</cu-custom>
+<page-default isShow="{{!fightList.length>0}}">
+    <view slot="content">还没有验证记录</view>
+</page-default>
+<view class="cu-list menu ">
+    <view class="cu-item bg-white" wx:for="{{fightList}}" wx:key wx:if="{{fightList.length>0}}">
+        <view class="content margin-left">
+            <view class="text-lg text-black padding-top">券码:{{item.number}}</view>
+            <view class="padding-top-xs">
+                <block wx:if="{{item.type == 1}}">
+                    <text class="padding-xs bg-red">券</text>
+                    {{item.ids_name}}
+                </block>
+                <block wx:if="{{item.type == 2}}">
+                    <text class="padding-xs bg-green">团</text>
+                    {{item.ids_name}}
+                </block>
+            </view>
+            <view class="padding-top-xs">数量:{{item.count}}</view>
+            <view class="padding-top-xs padding-bottom">{{item.expiretime}}</view>
+        </view>
+        <view class="action padding-top-lg">
+            <view class="padding-bottom padding-top-lg">
+                支付
+                <text class="text-price text-red">{{item.money}}</text>
+            </view>
+            <view class="text-red padding-tb-lg text-lg">验证成功</view>
+        </view>
+    </view>
+</view>

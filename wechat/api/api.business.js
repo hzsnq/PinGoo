@@ -106,6 +106,22 @@ function ShopsFightVerificationRecord(params) {
     return fetch(CONFIG.API_HOST, 'ShopsFightVerificationRecord', params);
 }
 
+// 商家积分充值
+function ShopsIntegralRecharge(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsIntegralRecharge', params);
+}
+
+// 商家账户明细
+function ShopsMoneydList(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsMoneydList', params);
+}
+
+//商家收藏
+function CollectionShopsAll(params) {
+    return fetch(CONFIG.API_HOST, 'CollectionShopsAll', params);
+}
+
+
 module.exports = {
     SortQueryAll: SortQueryAll,
     ShopsRecommendList: ShopsRecommendList,
@@ -127,5 +143,8 @@ module.exports = {
     MuserLogin: MuserLogin,
     MuserLoginInfo: MuserLoginInfo,
     ShopsFightLooker: ShopsFightLooker,
-    ShopsFightVerificationRecord: ShopsFightVerificationRecord
+    ShopsFightVerificationRecord: ShopsFightVerificationRecord,
+    ShopsIntegralRecharge: ShopsIntegralRecharge,
+    ShopsMoneydList: ShopsMoneydList,
+    CollectionShopsAll: CollectionShopsAll
 };

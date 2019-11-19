@@ -13,9 +13,14 @@
     "pages/about/aboutUs/aboutUs",
     "pages/about/redPackets/redPackets",
     "pages/about/integral/integral",
-    "pages/about/businessLogin/businessLogin",
-    "pages/about/businessAdmin/businessAdmin",
-    "pages/about/verifyHistory/verifyHistory",
+
+    "pages/admin/businessLogin/businessLogin",
+    "pages/admin/businessAdmin/businessAdmin",
+    "pages/admin/verifyHistory/verifyHistory",
+    "pages/admin/businessIntegral/businessIntegral",
+    "pages/admin/businessIncome/businessIncome",
+    "pages/admin/businessDetailed/businessDetailed",
+    "pages/admin/businessCollection/businessCollection",
 
     "pages/order/home/home",
 

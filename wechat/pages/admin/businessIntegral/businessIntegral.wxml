@@ -1,0 +1,43 @@
+<!-- pages/about/businessIntegral/businessIntegral.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">商家积分</view>
+</cu-custom>
+<view class="flex-sub text-center bg-gradual-red-90 text-white">
+    <view class="text-xsl padding-top-sm">{{businessInfo.integral}}</view>
+    <view class="padding-sm">当前积分</view>
+    <view class="cu-list menu solid-top line-white">
+        <view class="cu-item arrow" bindtap="toBusinessDetailed">
+            <view class="content text-right">积分明细</view>
+        </view>
+    </view>
+</view>
+<view class="grid col-2 text-center padding grid-square bg-white">
+    <view class="{{click==1?'bg-red':'solids line-red'}}" data-id='1' bindtap="clickChange">
+        10元(1000积分)
+    </view>
+    <view class="{{click==2?'bg-red':'solids line-red'}}" data-id='2' bindtap="clickChange">
+        20元(2000积分)
+    </view>
+    <view class="{{click==3?'bg-red':'solids line-red'}}" data-id='3' bindtap="clickChange">
+        50元(5000积分)
+    </view>
+    <view class="{{click==4?'bg-red':'solids line-red'}}" data-id='4' bindtap="clickChange">
+        100元(10000积分)
+    </view>
+</view>
+<view class="cu-bar bg-gray">
+    <view class="action">
+        <text class="">支付方式</text>
+    </view>
+</view>
+<view class="cu-form-group">
+    <view class="title">收入余额支付</view>
+    <radio class="radio text-red" checked="{{true}}"></radio>
+</view>
+<view class="padding-xl">
+    <button class="cu-btn block bg-red lg" bindtap="toIntegral">确认支付</button>
+</view>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

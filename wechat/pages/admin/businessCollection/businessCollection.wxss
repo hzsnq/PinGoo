@@ -1,0 +1,22 @@
+/* pages/about/businessCollection/businessCollection.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.cu-form-group {
+    min-height: 110rpx;
+    padding: 5rpx 30rpx;
+}
+
+.list-right {
+    margin-right: 40rpx;
+}
+
+.list-left {
+    margin-right: auto;
+}
+
+.cu-form-group image {
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50%;
+}

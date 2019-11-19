@@ -35,7 +35,8 @@ Page({
       name: '关于我们'
     }],
     businessInfo: [],
-    verifyCode: ''
+    verifyCode: '',
+    isShowModal: true
   },
 
   /**
@@ -47,25 +48,9 @@ Page({
       app.showTips('未登录商家后台');
       setTimeout(function () {
         wx.redirectTo({
-          url: '/pages/about/businessLogin/businessLogin'
+          url: '/pages/admin/businessLogin/businessLogin'
         })
       }, 1000);
-    } else {
-      let params = {};
-      params.muser_id = muser_id;
-      API.APIBusiness.MuserLoginInfo(params).then(d => {
-        if (d.data.code == 200) {
-          let index = d.data.address.indexOf('|') + 1;
-          let position2 = d.data.address.substring(index);
-          let position1 = d.data.address.substring(0, index - 1);
-          d.data.address = position1 + position2;
-          d.data.coverimg = this.data.imgUrl + d.data.coverimg;
-          console.log(d.data)
-          this.setData({
-            businessInfo: d.data
-          })
-        }
-      })
     }
   },
   //验证码输入
@@ -126,7 +111,7 @@ Page({
       app.showTips('未登录商家后台');
       setTimeout(function () {
         wx.redirectTo({
-          url: '/pages/about/businessLogin/businessLogin'
+          url: '/pages/admin/businessLogin/businessLogin'
         })
       }, 1000);
     } else {
@@ -147,7 +132,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let muser_id = wx.getStorageSync("muser_key");
+    if (muser_id === null || muser_id === undefined || muser_id === '') {
+      app.showTips('未登录商家后台');
+      setTimeout(function () {
+        wx.redirectTo({
+          url: '/pages/admin/businessLogin/businessLogin'
+        })
+      }, 1000);
+    } else {
+      let params = {};
+      params.muser_id = muser_id;
+      API.APIBusiness.MuserLoginInfo(params).then(d => {
+        if (d.data.code == 200) {
+          let index = d.data.address.indexOf('|') + 1;
+          let position2 = d.data.address.substring(index);
+          let position1 = d.data.address.substring(0, index - 1);
+          d.data.address = position1 + position2;
+          d.data.coverimg = this.data.imgUrl + d.data.coverimg;
+          this.setData({
+            businessInfo: d.data,
+            isShowModal: false
+          })
+        }
+      })
+    }
   },
 
   /**

@@ -20,7 +20,7 @@ Page({
       app.showTips('未登录商家后台');
       setTimeout(function () {
         wx.redirectTo({
-          url: '/pages/about/businessLogin/businessLogin'
+          url: '/pages/admin/businessLogin/businessLogin'
         })
       }, 1000);
     } else {
@@ -32,7 +32,7 @@ Page({
           this.setData({
             fightList: d.data.list_fight
           })
-          console.log(this.data.fightList)
+          // console.log(this.data.fightList)
         }
       })
     }

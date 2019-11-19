@@ -58,7 +58,7 @@ Page({
         if (d.data.code == 200) {
           wx.setStorageSync('muser_key', d.data.muser_id)
           wx.redirectTo({
-            url: "/pages/about/businessAdmin/businessAdmin"
+            url: "/pages/admin/businessAdmin/businessAdmin"
           })
         } else {
           app.showTips('登录失败')

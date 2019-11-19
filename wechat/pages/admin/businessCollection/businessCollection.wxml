@@ -1,0 +1,14 @@
+<!-- pages/about/businessCollection/businessCollection.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">商家收藏</view>
+</cu-custom>
+<page-default isShow="{{!userInfo.length>0}}">
+    <view slot="content">还没有收藏</view>
+</page-default>
+<view class="cu-form-group" wx:for="{{userInfo}}" wx:key wx:if="{{userInfo.length>0}}">
+    <view class='list-right'>
+        <image src="{{item.image}}" />
+    </view>
+    <view class='list-left'>{{item.name}}</view>
+    <view class='title'>{{item.sex==1?'男':'女'}}</view>
+</view>

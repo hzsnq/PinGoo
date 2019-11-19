@@ -53,7 +53,6 @@ Page({
   },
   //输入框方法
   bindInput: function (e) {
-    console.log(e)
     let itemName = e.currentTarget.dataset.name;
     let itemData = e.detail.value
     let formData = this.data.formData;

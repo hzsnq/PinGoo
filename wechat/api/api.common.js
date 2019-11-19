@@ -11,4 +11,16 @@ function cityName(params) {
     return fetch(CONFIG.API_HOST, 'CityName', params);
 }
 
-module.exports = { cityName };
+//支付宝账号查询
+function AliPayExtract(params) {
+    return fetch(CONFIG.API_HOST, 'AliPayExtract', params);
+}
+//商家收入余额提现
+function MuserExtractAliPay(params) {
+    return fetch(CONFIG.API_HOST, 'MuserExtractAliPay', params);
+}
+module.exports = {
+    cityName: cityName,
+    AliPayExtract: AliPayExtract,
+    MuserExtractAliPay: MuserExtractAliPay
+};
