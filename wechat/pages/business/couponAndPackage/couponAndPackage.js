@@ -52,7 +52,11 @@ Page({
     API.APIBusiness.CouponSee(params).then(d => {
       console.log(d.data)
       let list = [];
-      list.push({ image: d.data.shops.coverimg })
+      list.push({ image: d.data.shops.coverimg });
+      let index = d.data.shops.address.indexOf('|') + 1;
+      let position2 = d.data.shops.address.substring(index);
+      let position1 = d.data.shops.address.substring(0, index - 1);
+      d.data.shops.address = position1 + position2;
       this.setData({
         businessInfo: d.data.shops,
         bannerList: list,
@@ -69,6 +73,10 @@ Page({
   getPackagesList: function (params) {
     API.APIBusiness.PackagesSee(params).then(d => {
       console.log(d.data)
+      let index = d.data.shops.address.indexOf('|') + 1;
+      let position2 = d.data.shops.address.substring(index);
+      let position1 = d.data.shops.address.substring(0, index - 1);
+      d.data.shops.address = position1 + position2;
       this.setData({
         businessInfo: d.data.shops,
         bannerList: d.data.list_packageImage,

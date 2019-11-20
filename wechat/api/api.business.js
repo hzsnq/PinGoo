@@ -121,6 +121,55 @@ function CollectionShopsAll(params) {
     return fetch(CONFIG.API_HOST, 'CollectionShopsAll', params);
 }
 
+//商家查看评价列表
+function EvaluateList(params) {
+    return fetch(CONFIG.API_HOST, 'EvaluateList', params);
+}
+
+//商家资金
+function ShopsMoney(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsMoney', params);
+}
+
+//资金详情
+function ShopsMoneyS(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsMoneyS', params);
+}
+
+//商家编辑查询
+function ShopsLookId(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsLookId', params);
+}
+
+//商家优惠券查询
+function CouponQueryAll(params) {
+    return fetch(CONFIG.API_HOST, 'CouponQueryAll', params);
+}
+
+//商家删除优惠券
+function CouponDelId(params) {
+    return fetch(CONFIG.API_HOST, 'CouponDelId', params);
+}
+
+//上下架优惠券
+function CouponShelves(params) {
+    return fetch(CONFIG.API_HOST, 'CouponShelves', params);
+}
+
+//商家套餐查询
+function PackagesQueryAll(params) {
+    return fetch(CONFIG.API_HOST, 'PackagesQueryAll', params);
+}
+
+//商家删除套餐
+function PackagesDelId(params) {
+    return fetch(CONFIG.API_HOST, 'PackagesDelId', params);
+}
+
+//上下架套餐
+function PackageShelves(params) {
+    return fetch(CONFIG.API_HOST, 'PackageShelves', params);
+}
 
 module.exports = {
     SortQueryAll: SortQueryAll,
@@ -146,5 +195,15 @@ module.exports = {
     ShopsFightVerificationRecord: ShopsFightVerificationRecord,
     ShopsIntegralRecharge: ShopsIntegralRecharge,
     ShopsMoneydList: ShopsMoneydList,
-    CollectionShopsAll: CollectionShopsAll
+    CollectionShopsAll: CollectionShopsAll,
+    EvaluateList: EvaluateList,
+    ShopsMoney: ShopsMoney,
+    ShopsMoneyS: ShopsMoneyS,
+    ShopsLookId: ShopsLookId,
+    CouponQueryAll: CouponQueryAll,
+    CouponDelId: CouponDelId,
+    CouponShelves: CouponShelves,
+    PackagesQueryAll: PackagesQueryAll,
+    PackageShelves: PackageShelves,
+    PackagesDelId: PackagesDelId
 };

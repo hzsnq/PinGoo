@@ -1,4 +1,94 @@
 <!-- pages/admin/businessDecoration/businessDecoration.wxml -->
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
-    <view slot="content">商家信息</view>
+    <view slot="content">店铺信息</view>
 </cu-custom>
+<swiper class="screen-swiper square-dot" wx:if="{{businessBanner.length>0}}">
+    <swiper-item wx:for="{{businessBanner}}" wx:key bindtap='previewImage' data-src='{{item.image}}' data-list='{{businessBanner}}'>
+        <image src="{{imgUrl}}{{item.image}}" mode="widthFill"></image>
+    </swiper-item>
+</swiper>
+<!-- 商家名称 -->
+<view class="cu-list menu">
+    <view class="cu-item ">
+        <view class="content">
+            <view class="padding-tb-xs">
+                <text class="text-lg text-black">{{businessInfo.name}}</text>
+            </view>
+            <view class="text-df">
+                <text>营业时间:{{businessInfo.business_time}}</text>
+                <text class="padding-lr-xs">|</text>
+                <text>人均:</text>
+                <text class="text-price">{{businessInfo.average}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 商家地址 -->
+<view class="cu-bar bg-white">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">商家地址</text>
+    </view>
+</view>
+<view class="cu-list menu">
+    <view class="cu-item ">
+        <view class="action">
+            <view class=" text-lg" bindtap="map" data-address='{{businessInfo.address}}' data-name='{{businessInfo.name}}' data-lat='{{businessInfo.lat}}' data-lon='{{businessInfo.lon}}'>
+                <text class="cuIcon-location margin-right-xs"></text>
+            </view>
+        </view>
+        <view class="content" bindtap="map" data-address='{{businessInfo.address}}' data-name='{{businessInfo.name}}' data-lat='{{businessInfo.lat}}' data-lon='{{businessInfo.lon}}'>
+            <view class="">
+                <text class="text-df">{{businessInfo.address}}</text>
+            </view>
+            <!-- <view class=" flex">
+                <text class="text-df">
+                    <block>距您{{businessInfo.distance}}km</block>
+                </text>
+            </view> -->
+        </view>
+        <view class="action">
+            <view class=" text-green text-sl" bindtap='callBusiness' data-phone='{{businessInfo.tel}}'>
+                <text class="cuIcon-phone"></text>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 商家简介 -->
+<view class="cu-bar bg-white margin-top">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">商家简介</text>
+    </view>
+</view>
+<view class=" bg-white">
+    <view class="text-left padding">{{businessInfo.texts}}</view>
+</view>
+<!-- 商家实照 -->
+<view class="cu-bar bg-white margin-top" wx:if="{{businessImg.length>0}}">
+    <view class="action">
+        <text class="cuIcon-titles pg-text-red"></text>
+        <text class="">商家实照</text>
+    </view>
+</view>
+<view class="cu-card case bg-white" wx:if="{{businessImg.length>0}}">
+    <view class="cu-item shadow" wx:for="{{businessImg}}" wx:key wx:if="{{index<businessImgShowNum}}">
+        <view class="image">
+            <image src="{{imgUrl}}{{item.image}}" mode="aspectFill" bindtap='previewImage' data-src='{{imgUrl}}{{item.image}}' data-list='{{businessImg}}'></image>
+            <view class="cu-bar bg-shadeBottom">
+                <text class="text-cut">介绍：{{item.introduce}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<button class="cu-btn block bg-white " wx:if="{{businessImg.length>2}}" bindtap="showMoreImg">
+    <blcok>{{businessImg.length!=businessImgShowNum?'展开更多':'收起更多'}}</blcok>
+    <text class="{{businessImg.length!=businessImgShowNum?'cuIcon-unfold':'cuIcon-fold'}} pg-text-red"></text>
+</button>
+<view class="padding-xl">
+    <button class="cu-btn block bg-red lg" bindtap="toEdit">编辑</button>
+</view>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

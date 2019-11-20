@@ -50,7 +50,11 @@ Page({
       console.log(d, '商家全部信息')
       // console.log(d.data.shops.id, d.data.shops.muser_id)
       let list = [];
-      list.push({ image: d.data.shops.coverimg })
+      list.push({ image: d.data.shops.coverimg });
+      let index = d.data.shops.address.indexOf('|') + 1;
+      let position2 = d.data.shops.address.substring(index);
+      let position1 = d.data.shops.address.substring(0, index - 1);
+      d.data.shops.address = position1 + position2;
       this.setData({
         businessInfo: d.data.shops,
         businessBanner: list,

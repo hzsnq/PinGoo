@@ -79,7 +79,7 @@ Component({
       let params = {};
       params.user_id = user_id;
       API.APIUser.UserInfo(params).then(d => {
-        console.log(d)
+        // console.log(d)
         if (d.data.code == 200) {
           this.setData({
             userParameters: d.data

@@ -26,6 +26,10 @@
     "pages/admin/businessPackage/businessPackage",
     "pages/admin/businessCapital/businessCapital",
     "pages/admin/businessComment/businessComment",
+    "pages/admin/businessDecorationEdit/businessDecorationEdit",
+    "pages/admin/businessCouponsEdit/businessCouponsEdit",
+    "pages/admin/businessPackageEdit/businessPackageEdit",
+    "pages/admin/businessImgUpload/businessImgUpload",
 
     "pages/order/home/home",
 

@@ -33,12 +33,14 @@ Page({
               if (d.data.code == 200) {
                 wx.setStorageSync('user_id', d.data.user_id)
                 wx.setStorageSync('user_info', e.detail.userInfo)
-                that.setData({
-                  isShow: false
-                });
-                wx.navigateBack({
-                  delta: 1
-                });
+                if (wx.getStorageSync('user_info')) {
+                  that.setData({
+                    isShow: false
+                  });
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }
               }
             }).catch(e => {
               app.showTips(e);

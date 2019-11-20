@@ -1,0 +1,4 @@
+<!-- pages/admin/businessPackageEdit/businessPackageEdit.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">套餐编辑</view>
+</cu-custom>

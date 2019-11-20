@@ -115,7 +115,7 @@ Page({
         })
       }, 1000);
     } else {
-      console.log(e.currentTarget.dataset.path)
+      // console.log(e.currentTarget.dataset.path)
       wx.navigateTo({
         url: e.currentTarget.dataset.path
       })

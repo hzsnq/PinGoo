@@ -1,0 +1,4 @@
+<!-- pages/admin/businessDecorationEdit/businessDecorationEdit.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">店铺信息编辑</view>
+</cu-custom>

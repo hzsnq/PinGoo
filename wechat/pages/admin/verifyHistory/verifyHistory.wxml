@@ -6,7 +6,7 @@
     <view slot="content">还没有验证记录</view>
 </page-default>
 <view class="cu-list menu ">
-    <view class="cu-item bg-white" wx:for="{{fightList}}" wx:key wx:if="{{fightList.length>0}}">
+    <view class="cu-item bg-white" wx:for="{{fightList}}" wx:key wx:if="{{fightList.length>0}}" bindtap="tapListItem" data-id='{{item.ids}}' data-page="{{item.type == 1?'coupon':'package'}}">
         <view class="content margin-left">
             <view class="text-lg text-black padding-top">券码:{{item.number}}</view>
             <view class="padding-top-xs">

@@ -1,3 +1,43 @@
 /* pages/admin/businessPackage/businessPackage.wxss */
 @import "../../../colorui/main.wxss";
 @import "../../../colorui/icon.wxss";
+
+.cu-card {
+    overflow: visible;
+}
+
+.cu-card>.cu-item {
+    overflow: visible;
+    transform: translateX(0rpx);
+    transition: all 0.6s ease-in-out 0s;
+}
+
+.cu-card>.cu-item.move-cur {
+    display: flex;
+    transform: translateX(-260rpx);
+}
+
+.cu-card>.cu-item .move {
+    display: flex;
+    width: 260rpx;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+}
+
+.cu-card>.cu-item .move view {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cu-card.article>.cu-item {
+    padding-bottom: 30rpx;
+}
+
+.cu-card.article>.cu-item .content>image {
+    margin-right: 60rpx;
+}

@@ -19,7 +19,6 @@ Page({
   onLoad: function (options) {
     this.isCollection();
   },
-
   //获取全部收藏
   isCollection: function () {
     let user_id = wx.getStorageSync("user_id");

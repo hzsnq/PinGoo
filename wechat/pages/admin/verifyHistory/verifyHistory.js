@@ -37,7 +37,20 @@ Page({
       })
     }
   },
-
+  tapListItem: function (e) {
+    if (app.isLogin()) {
+      console.log('登陆啦')
+    } else {
+      app.login()
+      return
+    }
+    let id = e.currentTarget.dataset.id;
+    let muser_id = wx.getStorageSync("muser_key");
+    let page = e.currentTarget.dataset.page;
+    wx.navigateTo({
+      url: "/pages/business/couponAndPackage/couponAndPackage?id=" + id + "&muser_id=" + muser_id + "&page=" + page
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

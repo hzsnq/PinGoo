@@ -1,3 +1,21 @@
 /* pages/admin/businessCapital/businessCapital.wxss */
 @import "../../../colorui/main.wxss";
 @import "../../../colorui/icon.wxss";
+
+.cu-list.menu>.cu-item {
+    width: 90%;
+    border-radius: 20rpx;
+    margin: 0 5%;
+    padding: 30rpx;
+}
+
+.cu-list.menu>.cu-item .content>view:first-child {
+    display: block;
+    align-items: center;
+}
+
+.grid.col-2.grid-square>view {
+    padding: 20rpx 0;
+    height: auto;
+    width: calc((100% - 20rpx)/2);
+}

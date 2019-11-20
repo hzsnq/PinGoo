@@ -2,3 +2,41 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">套餐管理</view>
 </cu-custom>
+<view class="cu-card article no-card bg-white pg-index-list " wx:if="{{packageList.list_packages.length>0}}">
+    <view wx:for="{{packageList.list_packages}}" wx:key class="cu-item padding-top shadow {{modalName=='move-box-'+ index?'move-cur':''}}" style='animation: show 1.2s 1;-webkit-animation: show 1.2s 1;' bindtouchstart='ListTouchStart' bindtouchmove='ListTouchMove' bindtouchend='ListTouchEnd' data-target="move-box-{{index}}">
+        <view class="content">
+            <image src="{{imgUrl}}{{item.image}}" mode="aspectFill" lazy-load="{{true}}" bindtap="toChild" data-id='{{item.id}}' data-page="package"></image>
+            <view class="desc">
+                <view class='text-lg text-black margin-bottom-sm' bindtap="toChild" data-id='{{item.id}}' data-page="package">
+                    {{item.package_name}}
+                </view>
+                <view class='text-black margin-bottom-sm' bindtap="toChild" data-id='{{item.id}}' data-page="package">
+                    <text>满{{item.money}}减</text>
+                    <text class='text-red'>{{item.money_single}}</text>
+                </view>
+                <view class='text-black'>{{item.addtime}}</view>
+                <view class="margin-top">
+                    <button class="cu-btn line-red margin-right" wx:if="{{item.state==2}}" bindtap="toEdit" data-id='{{item.id}}'>
+                        编辑
+                    </button>
+                    <button class="cu-btn line-green" data-id='{{item.id}}' data-state="{{item.state}}" bindtap="changeState">
+                        {{item.state==1?'下架':'上架'}}
+                    </button>
+                </view>
+            </view>
+        </view>
+        <view class="move">
+            <view class="bg-red" data-id="{{item.id}}" bindtap="delItem">删除</view>
+        </view>
+    </view>
+</view>
+<view class="padding-xl">
+    <button class="cu-btn block bg-red lg" bindtap="toEdit">添加</button>
+</view>
+<page-default isShow="{{!packageList.list_packages.length>0}}">
+    <view slot="content">还没有套餐</view>
+</page-default>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

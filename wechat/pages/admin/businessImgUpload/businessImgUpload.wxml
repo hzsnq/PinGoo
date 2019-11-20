@@ -1,0 +1,4 @@
+<!-- pages/admin/businessImgUpload/businessImgUpload.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">商家图片上传</view>
+</cu-custom>
