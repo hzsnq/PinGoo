@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+<cu-custom bgColor="bg-green" isCustom="{{true}}">
     <view slot="content">登录页</view>
 </cu-custom>
 <view class='UCenter-bg'>

@@ -1,3 +1,11 @@
 /* pages/admin/businessImgUpload/businessImgUpload.wxss */
 @import "../../../colorui/main.wxss";
 @import "../../../colorui/icon.wxss";
+
+.upload-center {
+    line-height: 335rpx;
+}
+
+.cu-tag {
+    background-color: rgba(0, 0, 0, 0.5);
+}

@@ -15,7 +15,6 @@ Page({
     //表单数据
     formData: { businessName: '', businessAddress: '', businessTrade: '', businessUserName: '', businessUserTel: '' },
     picker: [],
-    imgList: [],
   },
 
   /**
@@ -74,6 +73,7 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
+        console.log(res.tempFilePaths)
         this.setData({
           imgList: res.tempFilePaths
         })

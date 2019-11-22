@@ -2,3 +2,21 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">商家图片上传</view>
 </cu-custom>
+<view class="cu-form-group">
+    <view class="grid col-2 grid-square flex-sub">
+        <view class="padding-xs solids bg-img" data-index="{{imgId}}" style="background-image:url({{imgPath ==''?'':imgPath}});">
+            <text class='icon-cameraadd' wx:if='{{isShow}}'></text>
+            <view class="cu-tag " bindtap='deleteImage' id='{{imgId}}' wx:if='{{isShowClose}}'>
+                <text class='cuIcon-close'></text>
+            </view>
+        </view>
+        <view class="line-blue upload-center" bindtap='chooseImage'>添加/更换一张图片</view>
+    </view>
+</view>
+<view class="cu-form-group">
+    <view class='title'>图片标题</view>
+    <input placeholder="输入您的图片标题" class='radius' name='input' value='{{imgTitle}}' bindinput="getImgTitle"></input>
+</view>
+<view class="padding-sm">
+    <button class='cu-btn block lg bg-red-ts bg-red' bindtap='uploadImgInfo'>完成</button>
+</view>

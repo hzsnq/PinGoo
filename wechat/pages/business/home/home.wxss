@@ -4,7 +4,6 @@
     min-height: 102rpx;
 }
 
-
 .card-swiper {
     height: 300rpx !important;
 }
@@ -17,4 +16,8 @@
     width: 70rpx;
     height: 70rpx;
     margin: 0 auto;
+}
+
+.cu-avatar {
+    background: rgba(0, 0, 0, 0);
 }

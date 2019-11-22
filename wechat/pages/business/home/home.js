@@ -303,6 +303,17 @@ Component({
       wx.navigateTo({
         url: "/pages/about/recommend/recommend"
       })
+    },
+    toMessage() {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login();
+        return
+      }
+      wx.navigateTo({
+        url: "/pages/about/message/message"
+      })
     }
   }
 })

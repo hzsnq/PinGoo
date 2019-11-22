@@ -1,4 +1,5 @@
 //app.js
+const CONFIG = require('./config/config.js');
 App({
   onLaunch: function () {
     this.getSystemInfo();
@@ -6,6 +7,7 @@ App({
   },
   onShow: function (options) {
     console.log('App Show');
+    // this.globalData.dataStatus = true;
     // this.getPgLocation()
     // if (options.scene == 1007 || options.scene == 1008) { // 通过分享消息进来的            
     //   if (options.query && options.query.uid) {
@@ -64,9 +66,11 @@ App({
   globalData: {
     userInfo: null,
     token: null,
-    imgUrl: "http://image.iqqia.com/",
-    serverImgUrl: 'https://iqqia.com/wximage/',
+    imgUrl: CONFIG.ImgUrl,
+    serverImgUrl: CONFIG.ServerImgUrl,
     dataStatus: false,
-    cityName: '定位中'
+    cityName: '定位中',
+    shopImgList: [],
+    packagesList: []
   }
 })

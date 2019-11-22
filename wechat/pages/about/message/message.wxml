@@ -5,3 +5,12 @@
 <page-default isShow="{{!messageListShow}}">
     <view slot="content">还没有消息</view>
 </page-default>
+<view class="cu-list menu" wx:if="{{messageListShow}}">
+    <view class="cu-item" wx:for="{{messageList}}" wx:key>
+        <view class="content">
+            <view class="padding-top-sm">{{item.titles}}</view>
+            <view class=" padding-top-sm">{{item.content}}</view>
+            <view class="padding-top-sm">{{item.addtime}}</view>
+        </view>
+    </view>
+</view>

@@ -6,7 +6,15 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+const formatTimeYear = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('-')
 }
 
 const formatNumber = n => {
@@ -32,6 +40,7 @@ const tel = (i) => {
 
 module.exports = {
   formatTime: formatTime,
+  formatTimeYear: formatTimeYear,
   cityName: cityName,
   tel: tel
 }

@@ -7,20 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    messageListShow: false
+    messageListShow: false,
+    messageList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.globalData.dataStatus = true;
     let user_id = wx.getStorageSync('user_id');
     let params = {};
-    params.user_id = user_id
+    params.user_id = user_id;
     API.APIUser.UserPushList(params).then(d => {
-      console.log(d.data.list_push.length)
-      if (d.data.code == 200 && d.data.list_push.length != 0) {
-        console.log(1)
+      if (d.statusCode == 200 && d.data.list_push.length != 0) {
         this.setData({
           messageList: d.data.list_push,
           messageListShow: true

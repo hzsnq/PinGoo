@@ -1,36 +1,10 @@
 <cu-custom bgColor="bg-gradual-red">
     <view slot="content" class="text-white">订单</view>
 </cu-custom>
-<!-- 前贴视频广告 -->
-<view class="cu-bar bg-white">
-    <view class="action">
-        <text class="cuIcon-titles pg-text-red"></text>
-        <text class="">前贴视频广告（需要视频）</text>
-    </view>
-</view>
-<video unit-id="adunit-fb1c723e2ffb608e"></video>
-<!-- 视频广告 -->
-<view class="cu-bar bg-white">
-    <view class="action">
-        <text class="cuIcon-titles pg-text-red"></text>
-        <text class="">视频广告</text>
-    </view>
-</view>
-<ad unit-id="adunit-826b44afa629ac48" ad-type="video" ad-theme="white"></ad>
-<!-- banner广告 -->
-<view class="cu-bar bg-white">
-    <view class="action">
-        <text class="cuIcon-titles pg-text-red"></text>
-        <text class="">banner广告1</text>
-    </view>
-</view>
-<ad unit-id="adunit-29149e0f839d5e56"></ad>
-<!-- banner广告 -->
-<view class="cu-bar bg-white">
-    <view class="action">
-        <text class="cuIcon-titles pg-text-red"></text>
-        <text class="">banner广告2</text>
-    </view>
-</view>
-<ad unit-id="adunit-7c4c2d2415e851e8"></ad>
-<view class='cu-tabbar-height'></view>
+<page-default isShow="{{!orderList.length>0}}">
+    <view slot="content">暂无订单</view>
+</page-default>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

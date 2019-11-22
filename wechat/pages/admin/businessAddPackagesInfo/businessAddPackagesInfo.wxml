@@ -1,0 +1,21 @@
+<!-- pages/admin/businessAddPackagesInfo/businessAddPackagesInfo.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">套餐信息编辑</view>
+</cu-custom>
+<view class="cu-form-group">
+    <view class='title'>套餐信息</view>
+    <input placeholder="输入您的套餐信息" class='radius' name='input' value='{{packageName}}' bindinput='getPackageName'></input>
+</view>
+<view class="cu-form-group">
+    <view class='title'>数量</view>
+    <input placeholder="输入数量" class='radius' name='input' type="number" value='{{packageNum}}' bindinput='getPackageNum'></input>
+    份
+</view>
+<view class="cu-form-group">
+    <view class='title'>金额</view>
+    <input placeholder="输入金额" class='radius' name='input' type="digit" value='{{packageMoney}}' bindinput='getPackageMoney'></input>
+    元
+</view>
+<view class="padding-sm">
+    <button class='cu-btn block lg bg-red-ts bg-red' bindtap='updatePackagesInfo'>完成</button>
+</view>

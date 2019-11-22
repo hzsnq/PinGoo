@@ -20,37 +20,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let muser_id = wx.getStorageSync("muser_key");
-    let location = wx.getStorageSync("userLocation");
-    if (muser_id === null || muser_id === undefined || muser_id === '') {
-      app.showTips('未登录商家后台');
-      setTimeout(function () {
-        wx.redirectTo({
-          url: '/pages/admin/businessLogin/businessLogin'
-        })
-      }, 1000);
-    } else {
-      let params = {};
-      params.muser_id = muser_id;
-      params.lon = location.substring(0, location.indexOf(','));
-      params.lat = location.substring(location.indexOf(',') + 1);
-      API.APIBusiness.ShopsLookId(params).then(d => {
-        if (d.statusCode == 200) {
-          let list = [];
-          list.push({ image: d.data.shops.coverimg })
-          let index = d.data.shops.address.indexOf('|') + 1;
-          let position2 = d.data.shops.address.substring(index);
-          let position1 = d.data.shops.address.substring(0, index - 1);
-          d.data.shops.address = position1 + position2;
-          this.setData({
-            businessInfo: d.data.shops,
-            businessBanner: list,
-            businessImg: d.data.list_shopsImage,
-            isShowModal: false
-          })
-        }
-      })
-    }
   },
   //查看地图
   map: function (e) {
@@ -112,7 +81,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let muser_id = wx.getStorageSync("muser_key");
+    let location = wx.getStorageSync("userLocation");
+    if (muser_id === null || muser_id === undefined || muser_id === '') {
+      app.showTips('未登录商家后台');
+      setTimeout(function () {
+        wx.redirectTo({
+          url: '/pages/admin/businessLogin/businessLogin'
+        })
+      }, 1000);
+    } else {
+      let params = {};
+      params.muser_id = muser_id;
+      params.lon = location.substring(0, location.indexOf(','));
+      params.lat = location.substring(location.indexOf(',') + 1);
+      API.APIBusiness.ShopsLookId(params).then(d => {
+        if (d.statusCode == 200) {
+          let list = [];
+          list.push({ image: d.data.shops.coverimg })
+          let index = d.data.shops.address.indexOf('|') + 1;
+          let position2 = d.data.shops.address.substring(index);
+          let position1 = d.data.shops.address.substring(0, index - 1);
+          d.data.shops.address = position1 + position2;
+          this.setData({
+            businessInfo: d.data.shops,
+            businessBanner: list,
+            businessImg: d.data.list_shopsImage,
+            isShowModal: false
+          })
+        }
+      })
+    }
   },
 
   /**

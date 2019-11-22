@@ -30,6 +30,7 @@
     "pages/admin/businessCouponsEdit/businessCouponsEdit",
     "pages/admin/businessPackageEdit/businessPackageEdit",
     "pages/admin/businessImgUpload/businessImgUpload",
+    "pages/admin/businessAddPackagesInfo/businessAddPackagesInfo",
 
     "pages/order/home/home",
 

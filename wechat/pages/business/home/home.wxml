@@ -5,7 +5,9 @@
     <view id="index-top">
         <!-- 搜索框 -->
         <view class="cu-bar search bg-gradual-red">
-            <view class="cu-avatar round" style="background-image:url(https://image.weilanwl.com/img/square-2.jpg);"></view>
+            <view class="cu-avatar round" bindtap="toMessage">
+                <text class="cuIcon-message "></text>
+            </view>
             <view class="search-form round" bindtap="toSearch">
                 <text class="cuIcon-search"></text>
                 <text class="text-grey">搜索商铺、美食</text>

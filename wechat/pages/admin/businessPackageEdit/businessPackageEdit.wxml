@@ -2,3 +2,126 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">套餐编辑</view>
 </cu-custom>
+<form bindsubmit="formSubmit">
+    <!-- 套餐名称 -->
+    <view class="cu-form-group">
+        <view class="title">套餐名称</view>
+        <input placeholder="请输入套餐名称" name="packageName" value="{{formData.packageName}}" bindinput="bindInput" data-name="packageName"></input>
+    </view>
+    <!-- 套餐原价 -->
+    <view class="cu-form-group">
+        <view class="title">套餐原价</view>
+        <input placeholder="请输入原价" name="packagePrice" value="{{formData.packagePrice}}" bindinput="bindInput" data-name="packagePrice"></input>
+        <text class="text-red">单位:元</text>
+    </view>
+    <!-- 团购价 -->
+    <view class="cu-form-group">
+        <view class="title">套餐团购价</view>
+        <input placeholder="请输入金额" name="packageGroupPrice" value="{{formData.packageGroupPrice}}" bindinput="bindInput" data-name="packageGroupPrice"></input>
+        <text class="text-red">单位:元</text>
+    </view>
+    <!-- 套餐详情图片 -->
+    <view class="cu-bar bg-white text-black" style="border-top: 1rpx solid #eee;">
+        <view class="action">套餐详情图片</view>
+        <view class="action">{{shopImgListGlobalData.length}}张</view>
+    </view>
+    <scroll-view class="nav" scroll-x scroll-left="0">
+        <view class=" bg-img cu-item" wx:for="{{shopImgListGlobalData}}" wx:key style="background-image:url({{imgUrl}}{{item.imgPath }});" data-index="{{item.imgId}}" bindtap='toUpload'>
+            <view class="cu-tag bg-black ">
+                <text class='cuIcon-edit'></text>
+            </view>
+            <view class="msg-cover bg-black">{{item.imgTitle }}</view>
+        </view>
+    </scroll-view>
+    <view class="bg-white" style="border-bottom: 1rpx solid #eee;">
+        <button class='cu-btn block bg-white lg text-blue' bindtap='toUpload'>
+            <text class='cuIcon-roundadd margin-right-sm'></text>
+            添加图片
+        </button>
+    </view>
+    <!-- 套餐商品管理 -->
+    <view class="cu-form-group">
+        <view class='title'>套餐商品管理</view>
+        <view class="action">{{packagesListGlobalData.length}}种</view>
+    </view>
+    <view class="packages-bottom">
+        <view class="cu-form-group packages-height" wx:for="{{packagesListGlobalData}}" wx:key data-index="{{item.packageId}}" bindtap='toAddPackages'>
+            <view class='title'>{{item.packageName}}</view>
+            <view class='title packages-num'>x{{item.packageNum}}</view>
+            <view class='title'>{{item.packageMoney}}元</view>
+        </view>
+    </view>
+    <view class="bg-white" style="border-bottom: 1rpx solid #eee;">
+        <button class='cu-btn block bg-white lg text-blue' bindtap='toAddPackages'>
+            <text class='cuIcon-roundadd margin-right-sm'></text>
+            添加商品
+        </button>
+    </view>
+    <!-- 开始时间 -->
+    <view class="cu-form-group">
+        <view class="title">套餐开始时间</view>
+        <picker mode="date" name="startTime" value="{{formData.startTime}}" bindchange="TimeChange" data-name="startTime">
+            <view class="picker">{{formData.startTime}}</view>
+        </picker>
+    </view>
+    <!-- 结束时间 -->
+    <view class="cu-form-group">
+        <view class="title">套餐结束时间</view>
+        <picker mode="date" name="endTime" value="{{formData.endTime}}" bindchange="TimeChange" data-name="endTime">
+            <view class="picker">{{formData.endTime}}</view>
+        </picker>
+    </view>
+    <!-- 使用条件 -->
+    <view class="cu-form-group">
+        <view class="title">使用条件</view>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">可叠加</view>
+        <view>
+            <radio class="radio" checked="{{repeats}}" bindtap="changeState" data-name='repeats'></radio>
+            <text class="padding-lr text-df">是</text>
+            <radio class="radio" checked="{{!repeats}}" bindtap="changeState" data-name='repeats'></radio>
+            <text class="padding-lr text-df">否</text>
+        </view>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">免预约</view>
+        <view>
+            <radio class="radio" checked="{{bespeak}}" bindtap="changeState" data-name='bespeak'></radio>
+            <text class="padding-lr text-df">是</text>
+            <radio class="radio" checked="{{!bespeak}}" bindtap="changeState" data-name='bespeak'></radio>
+            <text class="padding-lr text-df">否</text>
+        </view>
+    </view>
+    <!-- 预约条件 -->
+    <view class="cu-form-group" wx:if="{{!bespeak}}">
+        <view class="title">预约条件</view>
+        <input placeholder="例如：提前两小时预约" name="{{!bespeak?'packageBespeak':''}}" value="{{formData.packageBespeak}}" bindinput="bindInput" data-name="packageBespeak"></input>
+    </view>
+    <!-- 不可用日期 -->
+    <view class="cu-form-group">
+        <view class="title">不可用日期</view>
+    </view>
+    <view class="padding-top padding-lr bg-white" style="border-bottom: 1rpx solid #eee;">
+        <button class="cu-btn round margin-right margin-bottom {{item.click?'bg-red':''}}" wx:for="{{dateList}}" wx:key bindtap="click" data-index="{{index}}" data-name="date">
+            {{item.text}}
+        </button>
+    </view>
+    <!-- 适合范围 -->
+    <view class="cu-form-group">
+        <view class="title">适合范围</view>
+    </view>
+    <view class="padding-top padding-lr bg-white">
+        <button class="cu-btn round margin-right margin-bottom {{item.click?'bg-red':''}}" wx:for="{{changeList}}" wx:key bindtap="click" data-index="{{index}}" data-name="change">
+            {{item.text}}
+        </button>
+    </view>
+    <!-- 提交 -->
+    <view class="padding flex flex-direction">
+        <button class="cu-btn bg-red margin-tb lg" formType="submit">提交</button>
+    </view>
+</form>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

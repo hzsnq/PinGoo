@@ -171,6 +171,41 @@ function PackageShelves(params) {
     return fetch(CONFIG.API_HOST, 'PackageShelves', params);
 }
 
+//上传或编辑商家
+function ShopsEdit(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsEdit', params);
+}
+
+//获取商家套餐
+function PackagesLookId(params) {
+    return fetch(CONFIG.API_HOST, 'PackagesLookId', params);
+}
+
+//商家编辑套餐
+function PackagesEdit(params) {
+    return fetch(CONFIG.API_HOST, 'PackagesEdit', params);
+}
+
+//商家添加套餐
+function PackagesAdd(params) {
+    return fetch(CONFIG.API_HOST, 'PackagesAdd', params);
+}
+
+//获取商家优惠券
+function CouponLookId(params) {
+    return fetch(CONFIG.API_HOST, 'CouponLookId', params);
+}
+
+//商家编辑优惠券
+function CouponEdit(params) {
+    return fetch(CONFIG.API_HOST, 'CouponEdit', params);
+}
+
+//商家添加优惠券
+function CouponAdd(params) {
+    return fetch(CONFIG.API_HOST, 'CouponAdd', params);
+}
+
 module.exports = {
     SortQueryAll: SortQueryAll,
     ShopsRecommendList: ShopsRecommendList,
@@ -205,5 +240,12 @@ module.exports = {
     CouponShelves: CouponShelves,
     PackagesQueryAll: PackagesQueryAll,
     PackageShelves: PackageShelves,
-    PackagesDelId: PackagesDelId
+    PackagesDelId: PackagesDelId,
+    ShopsEdit: ShopsEdit,
+    PackagesLookId: PackagesLookId,
+    PackagesEdit: PackagesEdit,
+    PackagesAdd: PackagesAdd,
+    CouponLookId: CouponLookId,
+    CouponEdit: CouponEdit,
+    CouponAdd: CouponAdd
 };

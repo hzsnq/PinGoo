@@ -1,10 +1,14 @@
 // pages/order/home/home.js
+const API = require('../../../api/api.endpoint.js');
 const app = getApp();
+
 Component({
   options: {
     addGlobalClass: true,
   },
   data: {
+    isShowModal: true,
+    orderList: []
   },
   /*组件生命周期*/
   lifetimes: {
@@ -13,7 +17,24 @@ Component({
       console.log("在组件实例刚刚被创建时执行")
     },
     attached() {
-      console.log("在组件实例进入页面节点树时执行")
+      console.log("在组件实例进入页面节点树时执行");
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.showTips('未登录')
+        return
+      }
+      let params = {};
+      params.user_id = wx.getStorageSync("user_id");
+      API.APIOrder.FightListUserid(params).then(d => {
+        if (d.statusCode == 200) {
+          this.setData({
+            orderList: d.data.list_fight,
+            isShowModal: false
+          })
+        }
+        console.log(d)
+      })
     },
     ready() {
       console.log("在组件在视图层布局完成后执行")

@@ -2,3 +2,100 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
     <view slot="content">店铺信息编辑</view>
 </cu-custom>
+<form bindsubmit="formSubmit">
+    <!-- 店铺名称 -->
+    <view class="cu-form-group">
+        <view class="title">店铺名称</view>
+        <input placeholder="请输入商家名称" name="businessName" value="{{formData.businessName}}" bindinput="bindInput" data-name="businessName"></input>
+    </view>
+    <!-- 店铺封面 -->
+    <view class="cu-bar bg-white text-black" style="border-top: 1rpx solid #eee;">
+        <view class="action">封面图片</view>
+        <view class="action">{{coverList.length}}/1</view>
+    </view>
+    <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{coverList}}" wx:key="{{index}}" bindtap="ChooseImage" data-url="{{coverList[index]}}">
+                <image src='{{coverList[index]}}' mode='aspectFill'></image>
+                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="solids" bindtap="ChooseImage" wx:if="{{coverList.length<1}}">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
+        </view>
+    </view>
+    <!-- 店铺实照 -->
+    <view class="cu-bar bg-white text-black" style="border-top: 1rpx solid #eee;">
+        <view class="action">商家实照</view>
+        <view class="action">{{shopImgListGlobalData.length}}</view>
+    </view>
+    <scroll-view class="nav" scroll-x scroll-left="0">
+        <view class=" bg-img cu-item" wx:for="{{shopImgListGlobalData}}" wx:key style="background-image:url({{imgUrl}}{{item.imgPath }});" data-index="{{item.imgId}}" bindtap='toUpload'>
+            <view class="cu-tag bg-black ">
+                <text class='cuIcon-edit'></text>
+            </view>
+            <view class="msg-cover bg-black">{{item.imgTitle }}</view>
+        </view>
+    </scroll-view>
+    <view class="bg-white" style="border-bottom: 1rpx solid #eee;">
+        <button class='cu-btn block bg-white lg text-blue' bindtap='toUpload'>
+            <text class='cuIcon-roundadd margin-right-sm'></text>
+            添加图片
+        </button>
+    </view>
+    <!-- 开始营业时间 -->
+    <view class="cu-form-group">
+        <view class="title">营业开始时间</view>
+        <picker mode="time" name="startTime" value="{{formData.startTime}}" bindchange="TimeChange" data-name="startTime">
+            <view class="picker">{{formData.startTime}}</view>
+        </picker>
+    </view>
+    <!-- 结束营业时间 -->
+    <view class="cu-form-group">
+        <view class="title">营业结束时间</view>
+        <picker mode="time" name="endTime" value="{{formData.endTime}}" bindchange="TimeChange" data-name="endTime">
+            <view class="picker">{{formData.endTime}}</view>
+        </picker>
+    </view>
+    <!-- 联系电话 -->
+    <view class="cu-form-group">
+        <view class="title">联系电话</view>
+        <input placeholder="输入联系电话" type="number" maxlength="11" name="businessTel" value="{{formData.businessTel}}" bindinput="bindInput" data-name="businessTel"></input>
+    </view>
+    <!-- 人均消费 -->
+    <view class="cu-form-group">
+        <view class="title">人均消费</view>
+        <input placeholder="输入人均消费" name="businessConsume" value="{{formData.businessConsume}}" bindinput="bindInput" data-name="businessConsume"></input>
+        <text class="text-red">单位:元/位</text>
+    </view>
+    <!-- 营业地址 -->
+    <view class="cu-form-group" bindtap="getLocation">
+        <view class="title">营业地址</view>
+        <input placeholder="用于用户导航" name="businessAddress" value="{{formData.businessAddress}}" disabled="{{true}}"></input>
+        <input type="" hidden="{{true}}" name="latitude" value="{{formData.latitude}}" disabled="{{true}}" />
+        <input type="" hidden="{{true}}" name="longitude" value="{{formData.longitude}}" disabled="{{true}}" />
+        <text class="cuIcon-locationfill text-red"></text>
+    </view>
+    <!-- 详细地址 -->
+    <view class="cu-form-group">
+        <view class="title">详细地址</view>
+        <input placeholder="请输入详细店铺地址" name="businessAddressDetail" value="{{formData.businessAddressDetail}}" bindinput="bindInput" data-name="businessAddressDetail"></input>
+    </view>
+    <!-- 商家简介 -->
+    <view class="cu-form-group">
+        <view class="title">商家简介</view>
+    </view>
+    <view class="cu-form-group">
+        <textarea maxlength="-1" placeholder="描述您店铺的产品和您的店铺的故事" name="businessIntroduce" value="{{formData.businessIntroduce}}" bindinput="bindInput" data-name="businessIntroduce"></textarea>
+    </view>
+    <!-- 提交 -->
+    <view class="padding flex flex-direction">
+        <button class="cu-btn bg-red margin-tb lg" formType="submit">提交</button>
+    </view>
+</form>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>
