@@ -36,7 +36,7 @@ Page({
   formSubmit: function (e) {
     // console.log(e.detail.value, '表单信息')
     let submitArr = Object.values(e.detail.value);
-    if (submitArr.includes("") || submitArr.includes(undefined) || submitArr.includes(null)) {
+    if (submitArr.includes("") || submitArr.includes(undefined) || submitArr.includes(null)||this.data.imgList.length==0) {
       app.showTips('您还有内容没填写哦!')
       return
     } else if (util.tel(this.data.formData.businessUserTel)) {

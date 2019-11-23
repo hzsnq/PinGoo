@@ -1,0 +1,8 @@
+/* pages/order/orderEvaluate/orderEvaluate.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.cu-card.article>.cu-item {
+    padding-bottom: 30rpx;
+    padding-top: 30rpx
+}

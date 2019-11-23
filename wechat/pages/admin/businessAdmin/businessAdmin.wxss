@@ -36,3 +36,8 @@
     width: 88rpx;
     height: 88rpx;
 }
+
+.cu-list.grid>.cu-item .cu-tag {
+    left: 70%;
+    top: 20rpx;
+}

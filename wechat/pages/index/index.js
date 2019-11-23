@@ -112,13 +112,15 @@ Page({
       })
     } else if (that.data.PageCur == 'about') {
       that.selectComponent("#about").isCollection();
+    } else if (that.data.PageCur == 'order') {
+      that.selectComponent("#order").showOrder();
     }
   },
   onShareAppMessage() {
+    let user_id = wx.getStorageSync('user_id');
     return {
-      title: 'ColorUI-高颜值的小程序UI组件库',
-      imageUrl: '/images/share.jpg',
-      path: '/pages/index/index'
+      title: '拼goo+',
+      path: '/pages/index/index?user_id=' + user_id
     }
   }
 })

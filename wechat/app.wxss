@@ -18,7 +18,13 @@
 .pg-position {
     position: absolute;
     right: 0;
-    top: 30px;
+    top: 60rpx;
+}
+
+.pg-position-order {
+    position: absolute;
+    right: 0;
+    bottom: 10rpx;
 }
 
 .text-decoration {

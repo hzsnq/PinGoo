@@ -1,0 +1,64 @@
+<!-- pages/order/orderEvaluate/orderEvaluate.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">评论订单</view>
+</cu-custom>
+<view class="cu-card article no-card bg-white pg-index-list" wx:if="{{shopInfo.shops_coverimg}}">
+    <view class="cu-item shadow">
+        <view class="content">
+            <image src="{{imgUrl}}{{shopInfo.shops_coverimg}}" mode="aspectFill" lazy-load="{{true}}"></image>
+            <view class="desc">
+                <view class='text-lg '>{{shopInfo.shops_name}}</view>
+                <view class='text-df text-cut padding-bottom-xs'>数量：{{shopInfo.count}}</view>
+                <view class="">
+                    <view class="cu-tag round text-sm {{shopInfo.type==2?'bg-green':'bg-red'}}">
+                        {{shopInfo.ids_name}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<form bindsubmit="formSubmit">
+    <!-- 综合评价 -->
+    <view class="cu-form-group">
+        <view class="title">综合评价</view>
+        <view class="title">
+            <text class="cuIcon-favorfill {{item.state==0?'text-grey':'text-red'}}" wx:for="{{startList}}" wx:key bindtap="startChange" data-score="{{item.score}}" data-index="{{item.index}}"></text>
+        </view>
+        <view class="text-red text-left" style="width:50%;">{{startList[tabStar].text}}</view>
+    </view>
+    <!-- 评论内容 -->
+    <view class="cu-form-group">
+        <view class="title">评论内容</view>
+    </view>
+    <view class="cu-form-group">
+        <textarea maxlength="-1" placeholder="请留下您宝贵的意见" name="orderIntroduce" value="{{formData.orderIntroduce}}" bindinput="bindInput" data-name="orderIntroduce"></textarea>
+    </view>
+    <!-- 店铺封面 -->
+    <view class="cu-bar bg-white text-black" style="border-top: 1rpx solid #eee;">
+        <view class="action">评论图片</view>
+        <view class="action">{{imgList.length}}/4</view>
+    </view>
+    <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ChooseImage" data-url="{{imgList[index]}}">
+                <image src='{{imgList[index]}}' mode='aspectFill'></image>
+                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
+        </view>
+    </view>
+    <!-- 提交 -->
+    <view class="padding flex flex-direction">
+        <text class="text-red">*认真评论赚更多积分</text>
+        <button class="cu-btn bg-red margin-tb lg" formType="submit">提交</button>
+    </view>
+</form>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

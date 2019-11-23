@@ -7,6 +7,11 @@ App({
   },
   onShow: function (options) {
     console.log('App Show');
+    console.log(options.query)
+    if (options.query) {
+      wx.setStorageSync("sharerUid", options.query);
+    }
+    console.log(wx.getStorageSync("sharerUid"))
     // this.globalData.dataStatus = true;
     // this.getPgLocation()
     // if (options.scene == 1007 || options.scene == 1008) { // 通过分享消息进来的            

@@ -201,7 +201,7 @@
                     {{item1.content!=''?item1.content:'该用户未评价'}}
                 </view>
                 <view class="grid col-4 grid-square flex-sub">
-                    <view class="bg-img" wx:for="{{item1.list_evaluateImage}}" wx:key="{{index}}">
+                    <view class="bg-img" wx:for="{{item1.list_evaluateImage}}" wx:key="{{index}}" wx:if="{{item.image.length!=0}}">
                         <image src='{{imgUrl}}{{item.image}}' mode='aspectFill' bindtap='previewImage' data-src='{{imgUrl}}{{item.image}}' data-list='{{item1.list_evaluateImage}}'></image>
                     </view>
                 </view>

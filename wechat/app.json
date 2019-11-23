@@ -33,6 +33,10 @@
     "pages/admin/businessAddPackagesInfo/businessAddPackagesInfo",
 
     "pages/order/home/home",
+    "pages/order/refund/refund",
+    "pages/order/viewOrder/viewOrder",
+    "pages/order/orderComment/orderComment",
+    "pages/order/orderEvaluate/orderEvaluate",
 
     "pages/classify/home/home",
 

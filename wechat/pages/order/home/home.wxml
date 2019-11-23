@@ -1,9 +1,73 @@
 <cu-custom bgColor="bg-gradual-red">
     <view slot="content" class="text-white">订单</view>
 </cu-custom>
+<scroll-view scroll-x class="bg-white nav">
+    <view class="flex text-center">
+        <view class="cu-item flex-sub {{index==TabCur?'text-red cur':''}}" wx:for="{{navList}}" wx:key bindtap="tabSelect" data-index="{{item.index}}" data-id="{{item.id}}">
+            {{item.name}}
+        </view>
+    </view>
+</scroll-view>
+<view class="" style='animation: show 1.2s 1;-webkit-animation: show 1.2s 1;' wx:if="{{orderList.length>0}}">
+    <view class="margin-bottom bg-white" wx:for="{{orderList}}" wx:key>
+        <view class="cu-bar bg-white text-black" style="border-bottom: 1rpx solid #eee;">
+            <view class="action">
+                <block wx:if="{{TabCur==0}}">可使用</block>
+                <block wx:if="{{TabCur==1}}">未评价</block>
+                <block wx:if="{{TabCur==2}}">以使用</block>
+                <block wx:if="{{TabCur==3}}">
+                    <text class="text-red">退款中</text>
+                </block>
+            </view>
+            <view class="action">{{item.addtime}}</view>
+        </view>
+        <view class="cu-card article no-card bg-white pg-index-list" bindtap="toPackageOrCoupon" data-id="{{item.ids}}" data-muser="{{item.muser_id}}" data-page="{{item.type==2?'package':'coupon'}}">
+            <view class="cu-item shadow">
+                <view class="content">
+                    <image src="{{imgUrl}}{{item.shops_coverimg}}" mode="aspectFill" lazy-load="{{true}}"></image>
+                    <view class="desc">
+                        <view class='text-lg '>{{item.shops_name}}</view>
+                        <view class='text-df padding-tb-xs'>订单编号：{{item.number}}</view>
+                        <view class='text-df text-cut padding-bottom-xs'>数量：{{item.count}}</view>
+                        <view class="">
+                            <view class="cu-tag round text-sm {{item.type==2?'bg-green':'bg-red'}}">
+                                {{item.ids_name}}
+                            </view>
+                        </view>
+                        <view class='text-df pg-position-order'>
+                            <text>支付：</text>
+                            <text class="text-price text-red">{{item.actual_money}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cu-bar bg-white text-black" style="border-top: 1rpx solid #eee;">
+            <view class="action"></view>
+            <view class="action">
+                <button class="cu-btn line-grey round" bindtap="toRefund" data-id="{{item.id}}" wx:if="{{TabCur==0}}">
+                    申请退款
+                </button>
+                <button class="cu-btn line-red round margin-left" bindtap="toViewOrder" data-id="{{item.id}}" wx:if="{{TabCur==0}}">
+                    查看券
+                </button>
+                <button class="cu-btn line-red round margin-left" bindtap="toEvaluate" data-id="{{item.id}}" wx:if="{{TabCur==1}}">
+                    评价
+                </button>
+                <button class="cu-btn line-red round margin-left" bindtap="toComment" data-id="{{item.id}}" wx:if="{{TabCur==2}}">
+                    查看评价
+                </button>
+                <button class="cu-btn line-red round margin-left" bindtap="toProgress" data-id="{{item.id}}" wx:if="{{TabCur==3}}">
+                    查看进度
+                </button>
+            </view>
+        </view>
+    </view>
+</view>
 <page-default isShow="{{!orderList.length>0}}">
     <view slot="content">暂无订单</view>
 </page-default>
+<view class='cu-tabbar-height'></view>
 <!-- 初始加载显示modal -->
 <load-modal loadModal="{{isShowModal}}">
     <view slot="modal-text">加载中...</view>

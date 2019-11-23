@@ -193,35 +193,6 @@ Component({
         that.getContentList(id, location);
       }
     },
-    //完善时干掉
-    pingfens: function (pingfen) {
-      // pingfen = 4.2;
-      var xs = String(pingfen)
-      var xss = xs.split(".");
-      var xiao = parseFloat("0." + xss[1])
-
-      var nums = [];
-      if ((pingfen / 0.5) % 2 == 0) {
-        for (var i = 0; i < 5; i++) {
-          if (i < pingfen) {
-            nums.push(i);
-          } else {
-            nums.push(i);
-          }
-        }
-      } else { //评分不为整数，如3.5、2.5
-        for (var i = 0; i < 5; i++) {
-          if (i < pingfen - xiao) {
-            nums.push(i); //先把整数分离出来，如：3.5，这里就是先把3分离出来，把代表1的图片放进去
-          } else if (i == (pingfen - xiao)) {
-            nums.push(i); //把小数的部分分离出来，如：3.5里的0.5，把代表0.5的图片放进去
-          } else {
-            nums.push(i); //然后剩下的就是没有满的用代表0的图片放进去，如：3.5，里面放进去了3个代表1的图片，然后放入了1个代表0.5的图片，最后还剩一个图片的位置，这时候就放代表0的图片
-          }
-        }
-      }
-      return nums;
-    },
     getContentList(id, location) {
       app.globalData.dataStatus = true;
       let that = this;
@@ -236,14 +207,12 @@ Component({
       console.log('推荐商家当前页' + params.page)
       // console.log(params)
       API.APIBusiness.ShopsRecommendList(params).then(d => {
-        // console.log(d)
         if (d.data.status == 200) {
           for (var i = 0; i < d.data.list_shops.length; i++) {
             let index = d.data.list_shops[i].address.indexOf('|') + 1;
             let position2 = d.data.list_shops[i].address.substring(index);
             let position1 = d.data.list_shops[i].address.substring(0, index - 1);
             d.data.list_shops[i].address = position1 + position2;
-            // d.data.list_shops[i].score_fraction = that.pingfens(parseFloat(d.data.list_shops[i].score_fraction));
           }
           let contentList = that.data.contentList.concat(d.data.list_shops);
           that.setData({

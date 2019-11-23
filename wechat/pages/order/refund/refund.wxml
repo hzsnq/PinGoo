@@ -1,0 +1,20 @@
+<!-- pages/order/refund/refund.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content" class="text-white">申请退款</view>
+</cu-custom>
+<view class="cu-form-group">
+    <view class='title'>退单理由（至少选一项）</view>
+</view>
+<view class="cu-form-group" wx:for='{{list}}' wx:key>
+    <view class='title'>{{item.text}}</view>
+    <checkbox-group bindchange="checkItem" id='{{index}}'>
+        <checkbox value='{{item.text}}'></checkbox>
+    </checkbox-group>
+</view>
+<view class="padding-sm">
+    <button class='cu-btn block lg bg-red-ts bg-red' bindtap='insertItem'>完成</button>
+</view>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

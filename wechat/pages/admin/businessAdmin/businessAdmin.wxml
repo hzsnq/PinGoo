@@ -45,12 +45,49 @@
     <view class="cu-item" wx:for="{{iconList}}" wx:key data-path="{{item.path}}" bindtap="tapListItem">
         <view class="">
             <image src="{{item.icon}}" class="cu-item-img" />
+            <view class="cu-tag badge" wx:if="{{item.tip!=0}}"></view>
         </view>
         <text>{{item.name}}</text>
     </view>
 </view>
 <view class="padding-xl">
-    <button class="cu-btn block bg-red lg">退出登录</button>
+    <button class="cu-btn block bg-red lg" bindtap="singOut">退出登录</button>
+</view>
+<!-- 验证码弹出框 -->
+<view class="cu-modal {{codeModalShow?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">陈刚串串香</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl">
+            <view class="margin-bottom-xs">券码</view>
+            <view class="padding-xs bg-grey" style="width:50%; margin:0 auto">
+                {{codeInfo.number}}
+            </view>
+            <view class="text-left margin-bottom-xs">时间：{{codeInfo.addtime}}</view>
+            <view class="text-left margin-bottom-xs">数量：{{codeInfo.count}}</view>
+            <view class="text-left margin-bottom-xs">
+                预付：
+                <text class="text-price text-red">{{codeInfo.money}}</text>
+            </view>
+            <view class="text-left">
+                <view class="cu-tag round text-sm {{item.type==2?'bg-green':'bg-red'}}">
+                    {{codeInfo.ids_name}}
+                </view>
+            </view>
+        </view>
+        <view class="cu-bar bg-white justify-end">
+            <view class="action">
+                <button class="cu-btn line-red text-green" bindtap="hideModal">取消</button>
+                <button class="cu-btn bg-red margin-left" bindtap="codeVerification" data-number="{{codeInfo.number}}">
+                    确定
+                </button>
+            </view>
+        </view>
+    </view>
 </view>
 <!-- 初始加载显示modal -->
 <load-modal loadModal="{{isShowModal}}">

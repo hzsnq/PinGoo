@@ -7,8 +7,11 @@ Component({
     addGlobalClass: true,
   },
   data: {
+    imgUrl: app.globalData.imgUrl,
     isShowModal: true,
-    orderList: []
+    orderList: [],
+    navList: [{ id: 1, name: '待使用', index: 0 }, { id: 2, name: '待评价', index: 1 }, { id: 3, name: '已完成', index: 2 }, { id: 10, name: '退订单', index: 3 }],
+    TabCur: 0,
   },
   /*组件生命周期*/
   lifetimes: {
@@ -24,17 +27,7 @@ Component({
         app.showTips('未登录')
         return
       }
-      let params = {};
-      params.user_id = wx.getStorageSync("user_id");
-      API.APIOrder.FightListUserid(params).then(d => {
-        if (d.statusCode == 200) {
-          this.setData({
-            orderList: d.data.list_fight,
-            isShowModal: false
-          })
-        }
-        console.log(d)
-      })
+      this.getOrderList(1);
     },
     ready() {
       console.log("在组件在视图层布局完成后执行")
@@ -92,8 +85,104 @@ Component({
 
   },
   methods: {
-    pushOrderListCreated() {
-      console.log(1)
+    showOrder: function () {
+      this.setData({
+        TabCur: 0,
+        isShowModal: true
+      })
+      this.getOrderList(1);
+    },
+    //nav切换
+    tabSelect: function (e) {
+      let index = e.currentTarget.dataset.index;
+      let id = e.currentTarget.dataset.id;
+      this.setData({
+        TabCur: index,
+        isShowModal: true
+      });
+      this.getOrderList(id);
+    },
+    //获取订单列表
+    getOrderList: function (id) {
+      let params = {};
+      params.user_id = wx.getStorageSync("user_id");
+      params.use_state = id;
+      API.APIOrder.FightListUse(params).then(d => {
+        console.log(d)
+        if (d.statusCode == 200) {
+          this.setData({
+            orderList: d.data.list_fight,
+            isShowModal: false
+          })
+        }
+      })
+    },
+    //优惠券或者套餐
+    toPackageOrCoupon: function (e) {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login()
+        return
+      }
+      let id = e.currentTarget.dataset.id;
+      let muser_id = e.currentTarget.dataset.muser;
+      let page = e.currentTarget.dataset.page;
+      wx.navigateTo({
+        url: "/pages/business/couponAndPackage/couponAndPackage?id=" + id + "&muser_id=" + muser_id + "&page=" + page
+      })
+    },
+    //申请退款
+    toRefund: function (e) {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login()
+        return
+      }
+      let id = e.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: '/pages/order/refund/refund?id=' + id,
+      })
+    },
+    toViewOrder: function (e) {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login()
+        return
+      }
+      let id = e.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: '/pages/order/viewOrder/viewOrder?id=' + id,
+      })
+    },
+    toProgress: function (e) {
+      app.showTips('正在开发中...')
+    },
+    toComment: function (e) {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login()
+        return
+      }
+      let id = e.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: '/pages/order/orderComment/orderComment?id=' + id,
+      })
+    },
+    toEvaluate: function (e) {
+      if (app.isLogin()) {
+        console.log('登陆啦')
+      } else {
+        app.login()
+        return
+      }
+      let id = e.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: '/pages/order/orderEvaluate/orderEvaluate?id=' + id,
+      })
     }
   }
 })

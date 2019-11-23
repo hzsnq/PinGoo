@@ -56,6 +56,7 @@ Page({
           }
           //商家地址拆分
           let index = d.data.shops.address.indexOf('|') + 1;
+          console.log(d.data.shops.address)
           let position2 = d.data.shops.address.substring(index);
           let position1 = d.data.shops.address.substring(0, index - 1);
           //时间拆分

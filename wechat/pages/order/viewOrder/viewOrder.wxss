@@ -1,0 +1,16 @@
+/* pages/order/viewOrder/viewOrder.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.recommend-code {
+    margin: 200rpx auto 0;
+    width: 90%;
+    border-radius: 20rpx;
+    text-align: center;
+}
+
+.code-img {
+    width: 250rpx;
+    height: 250rpx;
+    margin: 20px auto 10px;
+}

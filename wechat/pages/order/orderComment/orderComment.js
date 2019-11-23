@@ -13,48 +13,28 @@ Page({
     Custom: app.globalData.Custom,
     imgUrl: app.globalData.imgUrl,
     commentList: [],
-    muser_id: '',
-    page: 1,
-    bgColor: '',
-    isShow: false,
-    isLoad: true,
-    isShowModal: true
+    isShowModal: true,
+    commentImg: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
-    this.setData({
-      muser_id: options.muser_id
-    })
     let params = {};
-    params.muser_id = options.muser_id;
-    params.page = 1;
+    params.id = options.id;
     this.getComment(params);
   },
   getComment: function (params) {
-    API.APIBusiness.ShopsEvaluateList(params).then(d => {
+    API.APIOrder.EvaluateQueryIds(params).then(d => {
       console.log(d.data)
-      if (d.data.code == 200) {
-        if (d.data.list_evaluate.length == 0) {
-          this.setData({
-            isShow: true,
-            isLoad: false,
-            bgColor: 'bg-white',
-            isShowModal: false
-          })
-        } else {
-          let commentList = this.data.commentList.concat(d.data.list_evaluate);
-          this.setData({
-            commentList: commentList,
-            isShow: false,
-            isLoad: true,
-            bgColor: '',
-            isShowModal: false
-          })
-        }
+      if (d.statusCode == 200) {
+        let commentList = d.data.evaluate;
+        this.setData({
+          commentList: commentList,
+          commentImg: d.data.evaluatelist_evaluateImage,
+          isShowModal: false
+        })
       }
     })
   },
@@ -69,15 +49,6 @@ Page({
     wx.previewImage({
       current: src, // 当前显示图片的http链接
       urls: list // 需要预览的图片http链接列表
-    })
-  },
-  loadMore: function () {
-    let params = {};
-    params.muser_id = this.data.muser_id;
-    params.page = this.data.page + 1;
-    this.getComment(params);
-    this.setData({
-      isShow: true
     })
   },
   /**

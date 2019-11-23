@@ -1,0 +1,15 @@
+<!-- pages/order/viewOrder/viewOrder.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content" class="text-white">查看券码</view>
+</cu-custom>
+<view class="bg-white recommend-code text-black">
+    <image src="{{fight.numberimg}}" class="code-img" />
+    <view class='padding-bottom'>
+        您的券码:{{number}}
+        <text class="text-red">{{fight.number}}</text>
+    </view>
+    <view class='padding-bottom' data-text='{{fight.number}}' bindtap='copyClick'>
+        <button class="cu-btn">复制券码</button>
+    </view>
+    <view class='padding-bottom'>Tips：将券码后四位提供给商家即可</view>
+</view>

@@ -1,0 +1,40 @@
+<!-- pages/order/orderComment/orderComment.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">评论列表</view>
+</cu-custom>
+<block wx:if="{{commentList.count>0}}">
+    <view class="cu-list menu-avatar comment solids-top">
+        <view class="cu-item align-start">
+            <view class="cu-avatar round" style="background-image:url({{commentList.user_image}});"></view>
+            <view class="content">
+                <view class="text-grey">{{commentList.user_name}}</view>
+                <view class="text-gray text-content text-df">
+                    <block wx:if="{{commentList.score>0}}">
+                        <text class="cuIcon-favorfill text-red" wx:for="{{commentList.score}}" wx:key></text>
+                    </block>
+                    <block wx:else>
+                        <text class="cuIcon-favor" wx:for="{{5}}" wx:key></text>
+                    </block>
+                </view>
+                <view class="text-gray text-content text-df">
+                    {{commentList.content!=''?commentList.content:'该用户未评价'}}
+                </view>
+                <view class="grid col-4 grid-square flex-sub">
+                    <view class="bg-img" wx:for="{{commentImg}}" wx:key="{{index}}" wx:if="{{item.image.length!=0}}">
+                        <image src='{{imgUrl}}{{item.image}}' mode='aspectFill' bindtap='previewImage' data-src='{{imgUrl}}{{item.image}}' data-list='{{commentImg}}'></image>
+                    </view>
+                </view>
+                <view class="margin-top-sm flex justify-between">
+                    <view class='cu-tag bg-blue light round'>{{commentList.ids_name}}</view>
+                </view>
+            </view>
+            <view class="action">
+                <view class="text-gray text-df">{{commentList.addtime}}</view>
+            </view>
+        </view>
+    </view>
+</block>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>
