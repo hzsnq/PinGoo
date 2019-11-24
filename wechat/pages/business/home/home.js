@@ -28,7 +28,9 @@ Component({
     isLoad: true,
     contentListShow: false,
     loadMore: false,
-    cityName: app.globalData.cityName
+    cityName: app.globalData.cityName,
+    //判断如何加载
+    contentLoad: false
   },
   /*组件生命周期*/
   lifetimes: {
@@ -150,7 +152,8 @@ Component({
           isShow: true,
           pageNum: pageNum,
           bgColor: '',
-          isLoad: true
+          isLoad: true,
+          contentLoad: true
         })
         that.showBusiness()
       }
@@ -214,13 +217,19 @@ Component({
             let position1 = d.data.list_shops[i].address.substring(0, index - 1);
             d.data.list_shops[i].address = position1 + position2;
           }
-          let contentList = that.data.contentList.concat(d.data.list_shops);
+          let contentList = that.data.contentList
+          if (that.data.contentLoad) {
+            contentList = contentList.concat(d.data.list_shops);
+          } else {
+            contentList = d.data.list_shops;
+          }
           that.setData({
             contentList: contentList,
             contentListShow: true,
             isShow: false,
             isShowModal: false,
-            loadMore: false
+            loadMore: false,
+            contentLoad: false,
           })
           // console.log(that.data.contentList[0].score_fraction)
         } else if (d.data.status == 400) {
@@ -230,7 +239,8 @@ Component({
               isLoad: false,
               bgColor: 'bg-white',
               loadMore: false,
-              isShowModal: false
+              isShowModal: false,
+              contentLoad: false,
             })
           }, 1000)
         }

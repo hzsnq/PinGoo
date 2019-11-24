@@ -56,6 +56,31 @@ function UserIntegraldList(params) {
     return fetch(CONFIG.API_HOST, 'UserIntegraldList', params);
 }
 
+//推荐用户登记
+function UserContactAdd(params) {
+    return fetch(CONFIG.API_HOST, 'UserContactAdd', params);
+}
+
+//用户修改二维码封面
+function UserErweima(params) {
+    return fetch(CONFIG.API_HOST, 'UserErweima', params);
+}
+
+//用户提现
+function UserMoneyTiXian(params) {
+    return fetch(CONFIG.API_HOST, 'UserMoneyTiXian', params);
+}
+
+//用户收入明细
+function UserMoneyer(params) {
+    return fetch(CONFIG.API_HOST, 'UserMoneyer', params);
+}
+
+//积分兑换红包
+function UserRedExchange(params) {
+    return fetch(CONFIG.API_HOST, 'UserRedExchange', params);
+}
+
 module.exports = {
     wxLogin: wxLogin,
     CollectionQueryAll: CollectionQueryAll,
@@ -66,5 +91,10 @@ module.exports = {
     UserPushList: UserPushList,
     OpinionUser: OpinionUser,
     UserRedList: UserRedList,
-    UserIntegraldList: UserIntegraldList
+    UserIntegraldList: UserIntegraldList,
+    UserContactAdd: UserContactAdd,
+    UserErweima: UserErweima,
+    UserMoneyTiXian: UserMoneyTiXian,
+    UserMoneyer: UserMoneyer,
+    UserRedExchange: UserRedExchange
 };

@@ -1,41 +1,39 @@
-// pages/business/comment/comment.js
+// pages/admin/businessCommentIntegral/businessCommentIntegral.js
 const app = getApp();
 const API = require('../../../api/api.endpoint.js');
+const CONFIG = require('../../../config/config.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 系统参数
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
-    Custom: app.globalData.Custom,
     imgUrl: app.globalData.imgUrl,
-    commentList: [],
     isShowModal: true,
-    commentImg: []
+    evaluateId: '',
+    shopInfo: {},
+    commentImg: [],
+    verifyCode: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let id = options.id;
+    console.log(id)
+    this.setData({
+      evaluateId: options.id
+    })
     let params = {};
-    params.id = options.id;
-    this.getComment(params);
-  },
-  getComment: function (params) {
-    API.APIOrder.EvaluateQueryIds(params).then(d => {
+    params.id = id;
+    API.APIOrder.EvaluateQueryId(params).then(d => {
       console.log(d.data)
-      if (d.statusCode == 200) {
-        let commentList = d.data.evaluate;
-        this.setData({
-          commentList: commentList,
-          commentImg: d.data.list_evaluateImage,
-          isShowModal: false
-        })
-      }
+      this.setData({
+        shopInfo: d.data.evaluate,
+        commentImg: d.data.list_evaluateImage,
+        isShowModal: false
+      })
     })
   },
   //在新页面中全屏预览图片
@@ -50,6 +48,31 @@ Page({
       current: src, // 当前显示图片的http链接
       urls: list // 需要预览的图片http链接列表
     })
+  },
+  //验证码输入
+  verifyInput: function (e) {
+    let itemData = e.detail.value
+    this.setData({
+      verifyCode: itemData
+    })
+  },
+  toGive: function () {
+    if (this.data.verifyCode != 0 && this.data.verifyCode < 80) {
+      let params = {};
+      params.muser_id = wx.getStorageSync("muser_key");
+      params.id = this.data.evaluateId;
+      params.integral = Number(this.data.verifyCode);
+      API.APIBusiness.ShopsIntegral(params).then(d => {
+        app.showTips(d.data.msg);
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 2500)
+      })
+    } else {
+      app.showTips('请输入0-80的积分')
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

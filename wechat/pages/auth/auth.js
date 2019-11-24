@@ -33,13 +33,34 @@ Page({
               if (d.data.code == 200) {
                 wx.setStorageSync('user_id', d.data.user_id)
                 wx.setStorageSync('user_info', e.detail.userInfo)
-                if (wx.getStorageSync('user_info')) {
-                  that.setData({
-                    isShow: false
-                  });
-                  wx.navigateBack({
-                    delta: 1
-                  });
+                let sharerUid = wx.getStorageSync('sharerUid');
+                let Uid = wx.getStorageSync('user_id');
+                if (sharerUid != Uid && sharerUid != undefined && Uid != undefined && sharerUid != null && Uid != null && sharerUid != '' && Uid != '') {
+                  let params = {};
+                  params.user_ids = sharerUid;
+                  params.user_id = Uid;
+                  API.APIUser.UserContactAdd(params).then(d => {
+                    if (d.statusCode == 200) {
+                      console.log(Uid + '被' + sharerUid + '推荐')
+                    }
+                    if (wx.getStorageSync('user_info')) {
+                      that.setData({
+                        isShow: false
+                      });
+                      wx.navigateBack({
+                        delta: 1
+                      });
+                    }
+                  })
+                } else {
+                  if (wx.getStorageSync('user_info')) {
+                    that.setData({
+                      isShow: false
+                    });
+                    wx.navigateBack({
+                      delta: 1
+                    });
+                  }
                 }
               }
             }).catch(e => {

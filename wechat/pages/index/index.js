@@ -37,6 +37,18 @@ Page({
         console.log('onClose event emit', res)
       })
     }
+    let sharerUid = wx.getStorageSync('sharerUid');
+    let Uid = wx.getStorageSync('user_id');
+    if (sharerUid != Uid && sharerUid != undefined && Uid != undefined && sharerUid != null && Uid != null && sharerUid != '' && Uid != '') {
+      let params = {};
+      params.user_ids = sharerUid;
+      params.user_id = Uid;
+      API.APIUser.UserContactAdd(params).then(d => {
+        if (d.statusCode == 200) {
+          console.log(Uid + '被' + sharerUid + '推荐')
+        }
+      })
+    }
 
     console.log(options.id, options.page_cur, 'onload判断是否有page_cur')
     //判断是否有参数

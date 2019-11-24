@@ -45,7 +45,6 @@ Page({
       params.state = this.data.TabCur;
       API.APIBusiness.EvaluateList(params).then(d => {
         if (d.data.code == 200) {
-          console.log(d.data)
           this.setData({
             commentList: d.data.list_evaluate,
             isShowModal: false
@@ -53,6 +52,12 @@ Page({
         }
       })
     }
+  },
+  toDetail: function (e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "/pages/admin/businessCommentIntegral/businessCommentIntegral?id=" + id
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

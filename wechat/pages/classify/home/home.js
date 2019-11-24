@@ -20,7 +20,7 @@ Component({
     contentList: [],
     contentListShow: false,
     scrollTo: 0,
-    isShowModal: false,
+    isShowModal: true,
     classifyList: null,
     TabCur: 0,
     subTab: [
@@ -270,6 +270,10 @@ Component({
       let list = this.data.paramsList;
       list.sorter_id = '';
       list.page = 1;
+      if (this.data.sorterList === null) {
+        app.showTips('网络错误')
+        return
+      }
       that.setData({
         toView: id,
         TabCur: item_id,

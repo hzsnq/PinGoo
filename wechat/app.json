@@ -13,6 +13,8 @@
     "pages/about/aboutUs/aboutUs",
     "pages/about/redPackets/redPackets",
     "pages/about/integral/integral",
+    "pages/about/userIncome/userIncome",
+    "pages/about/userDetailed/userDetailed",
 
     "pages/admin/businessLogin/businessLogin",
     "pages/admin/businessAdmin/businessAdmin",
@@ -31,6 +33,7 @@
     "pages/admin/businessPackageEdit/businessPackageEdit",
     "pages/admin/businessImgUpload/businessImgUpload",
     "pages/admin/businessAddPackagesInfo/businessAddPackagesInfo",
+    "pages/admin/businessCommentIntegral/businessCommentIntegral",
 
     "pages/order/home/home",
     "pages/order/refund/refund",

@@ -5,4 +5,52 @@
 <view class="flex-sub text-center bg-gradual-red-90 text-white">
     <view class="text-xsl padding-top-sm">{{integralCount}}</view>
     <view class="padding-sm">当前积分</view>
+    <view class="cu-list menu solid-top line-white">
+        <view class="cu-item arrow">
+            <view class="content text-right" bindtap="toUpdate">积分兑换红包</view>
+        </view>
+    </view>
 </view>
+<view class="cu-list menu">
+    <view class="cu-item bg-white" wx:for="{{list}}" wx:key wx:if="{{list.length>0}}">
+        <view class="content">
+            <view class="padding-top">{{item.remarks}}</view>
+            <view class="padding-bottom">{{item.addtime}}</view>
+        </view>
+        <view class="action">
+            <block wx:if='{{item.status == 1}}'>
+                <text class="text-red">+ {{item.money}}</text>
+            </block>
+            <block wx:if='{{item.status == 0}}'>
+                <text class="text-green">- {{item.money}}</text>
+            </block>
+        </view>
+    </view>
+</view>
+<!-- 弹出框 -->
+<view class="cu-modal {{codeModalShow?'show':''}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">积分兑换红包</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl bg-white">
+            <view class="cu-form-group margin-top text-left">
+                <view class="title">积分</view>
+                <input placeholder="请输入积分" type="number" value="{{num}}" bindinput="integralText"></input>
+            </view>
+        </view>
+        <view class="cu-bar bg-white justify-end">
+            <view class="action">
+                <button class="cu-btn line-red text-green" bindtap="hideModal">取消</button>
+                <button class="cu-btn bg-red margin-left" bindtap="integralExchange">确定</button>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 初始加载显示modal -->
+<load-modal loadModal="{{isShowModal}}">
+    <view slot="modal-text">加载中...</view>
+</load-modal>

@@ -57,7 +57,7 @@
 <view class="cu-modal {{codeModalShow?'show':''}}">
     <view class="cu-dialog">
         <view class="cu-bar bg-white justify-end">
-            <view class="content">陈刚串串香</view>
+            <view class="content">{{businessInfo.name}}</view>
             <view class="action" bindtap="hideModal">
                 <text class="cuIcon-close text-red"></text>
             </view>

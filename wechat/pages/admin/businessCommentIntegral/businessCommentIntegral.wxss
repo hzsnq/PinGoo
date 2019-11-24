@@ -1,0 +1,22 @@
+/* pages/admin/businessCommentIntegral/businessCommentIntegral.wxss */
+@import "../../../colorui/main.wxss";
+@import "../../../colorui/icon.wxss";
+
+.cu-card.article>.cu-item {
+    padding-bottom: 30rpx;
+    padding-top: 30rpx
+}
+
+
+.cu-list.menu-avatar>.cu-item .action {
+    width: 150rpx;
+    text-align: center;
+}
+
+.cu-list.menu-avatar>.cu-item {
+    align-items: flex-start;
+}
+
+.cu-list.menu-avatar>.cu-item+.cu-item {
+    border-top: 1rpx solid #eee;
+}

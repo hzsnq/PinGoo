@@ -11,7 +11,7 @@
 </scroll-view>
 <block wx:if="{{commentList.length>0}}">
     <view class="cu-list menu-avatar comment solids-top">
-        <view class="cu-item align-start" wx:for="{{commentList}}" wx:key wx:for-item="item1">
+        <view class="cu-item align-start" wx:for="{{commentList}}" wx:key wx:for-item="item1" bindtap="toDetail" data-id='{{item1.id}}'>
             <view class="cu-avatar round" style="background-image:url({{item1.user_image}});"></view>
             <view class="content">
                 <view class="text-grey">{{item1.user_name}}</view>
@@ -25,11 +25,6 @@
                 </view>
                 <view class="text-gray text-content text-df">
                     {{item1.content!=''?item1.content:'该用户未评价'}}
-                </view>
-                <view class="grid col-4 grid-square flex-sub">
-                    <view class="bg-img" wx:for="{{item1.list_evaluateImage}}" wx:key="{{index}}">
-                        <image src='{{imgUrl}}{{item.image}}' mode='aspectFill' bindtap='previewImage' data-src='{{imgUrl}}{{item.image}}' data-list='{{item1.list_evaluateImage}}'></image>
-                    </view>
                 </view>
                 <view class="margin-top-sm flex justify-between">
                     <view class='cu-tag bg-blue light round'>{{item1.ids_name}}</view>

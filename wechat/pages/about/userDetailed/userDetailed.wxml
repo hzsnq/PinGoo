@@ -1,0 +1,23 @@
+<!-- pages/about/userDetailed/userDetailed.wxml -->
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+    <view slot="content">收入明细</view>
+</cu-custom>
+<page-default isShow="{{!list.length>0}}">
+    <view slot="content">还没有明细</view>
+</page-default>
+<view class="cu-list menu">
+    <view class="cu-item bg-white" wx:for="{{list}}" wx:key wx:if="{{list.length>0}}">
+        <view class="content">
+            <view class="padding-top">{{item.remarks}}</view>
+            <view class="padding-bottom">{{item.addtime}}</view>
+        </view>
+        <view class="action">
+            <block wx:if='{{item.status == 1}}'>
+                <text class="text-red">+ {{item.money}}</text>
+            </block>
+            <block wx:if='{{item.status == 0}}'>
+                <text class="text-green">- {{item.money}}</text>
+            </block>
+        </view>
+    </view>
+</view>

@@ -47,6 +47,11 @@ function EvaluateAdd(params) {
     return fetch(CONFIG.API_HOST, 'EvaluateAdd', params);
 }
 
+//查看评论EvaluateQueryId
+function EvaluateQueryId(params) {
+    return fetch(CONFIG.API_HOST, 'EvaluateQueryId', params);
+}
+
 module.exports = {
     FightListUserid: FightListUserid,
     FightListUse: FightListUse,
@@ -56,5 +61,6 @@ module.exports = {
     ShopsFightVerification: ShopsFightVerification,
     EvaluateQueryIds: EvaluateQueryIds,
     EvaluatePre: EvaluatePre,
-    EvaluateAdd: EvaluateAdd
+    EvaluateAdd: EvaluateAdd,
+    EvaluateQueryId: EvaluateQueryId
 };

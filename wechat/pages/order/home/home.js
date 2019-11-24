@@ -25,6 +25,9 @@ Component({
         console.log('登陆啦')
       } else {
         app.showTips('未登录')
+        this.setData({
+          isShowModal: false
+        })
         return
       }
       this.getOrderList(1);

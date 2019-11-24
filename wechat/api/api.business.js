@@ -206,6 +206,11 @@ function CouponAdd(params) {
     return fetch(CONFIG.API_HOST, 'CouponAdd', params);
 }
 
+//商家赠送积分
+function ShopsIntegral(params) {
+    return fetch(CONFIG.API_HOST, 'ShopsIntegral', params);
+}
+
 module.exports = {
     SortQueryAll: SortQueryAll,
     ShopsRecommendList: ShopsRecommendList,
@@ -247,5 +252,6 @@ module.exports = {
     PackagesAdd: PackagesAdd,
     CouponLookId: CouponLookId,
     CouponEdit: CouponEdit,
-    CouponAdd: CouponAdd
+    CouponAdd: CouponAdd,
+    ShopsIntegral: ShopsIntegral
 };

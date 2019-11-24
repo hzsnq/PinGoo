@@ -1,4 +1,4 @@
-/* pages/about/integral/integral.wxss */
+/* pages/about/userIncome/userIncome.wxss */
 @import "../../../colorui/main.wxss";
 @import "../../../colorui/icon.wxss";
 

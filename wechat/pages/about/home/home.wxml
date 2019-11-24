@@ -7,28 +7,28 @@
 </view>
 <view class='padding-xs flex text-center text-grey bg-white shadow-warp mine-list'>
     <view class='flex flex-sub flex-direction solid-right' data-url='/pages/about/redPackets/redPackets' bindtap='tapListItem'>
-        <view class="text-xxl text-grey">
+        <view class="text-xxl text-black">
             {{userParameters.redscount?userParameters.redscount:0}}
         </view>
-        <view class=" text-black">
+        <view class="">
             <text class="cuIcon-redpacket_fill "></text>
             红包
         </view>
     </view>
     <view class='flex flex-sub flex-direction solid-right' data-url='/pages/about/integral/integral' bindtap='tapListItem'>
-        <view class="text-xxl text-grey">
+        <view class="text-xxl text-black">
             {{userParameters.integralcount?userParameters.integralcount:0}}
         </view>
-        <view class=" text-black">
+        <view class="">
             <text class="cuIcon-rechargefill"></text>
             积分
         </view>
     </view>
     <view class='flex flex-sub flex-direction solid-right' data-url='/pages/about/collection/collection' bindtap='tapListItem'>
-        <view class="text-xxl text-grey">
+        <view class="text-xxl text-black">
             {{userParameters.collectioncount?userParameters.collectioncount:0}}
         </view>
-        <view class=" text-black">
+        <view class="">
             <text class="cuIcon-favorfill"></text>
             收藏
         </view>

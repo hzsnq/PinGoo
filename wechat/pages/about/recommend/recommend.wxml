@@ -4,7 +4,7 @@
 </cu-custom>
 <view class="bg">
     <view class="bg-white recommend-code text-black">
-        <image src="{{userInfo.user_erweima}}" class="code-img" />
+        <image src="{{userInfo.user_erweima}}" class="code-img" data-state='{{userInfo.user.erweima}}' data-src="{{userInfo.user_erweima}}" bindtap='changeCover' />
         <view class='padding-bottom'>您的专属邀请码:{{userInfo.user.pid}}</view>
         <view class='padding-bottom' data-text='{{userInfo.user.pid}}' bindtap='copyClick'>
             复制邀请码
@@ -15,10 +15,10 @@
             <image class="cu-avatar" src="../../../images/zhuan_xin.png" />
             <view class="content margin-left">
                 <view class="text-df padding-tb-xs">已获奖励</view>
-                <view class="text-df text-red">0</view>
+                <view class="text-df text-red">{{userInfo.user.moneyer}}</view>
             </view>
             <view class="action margin-right">
-                <view class="cu-tag round bg-red padding-lr ">提现</view>
+                <view class="cu-tag round bg-red padding-lr " bindtap="money">提现</view>
             </view>
         </view>
     </view>

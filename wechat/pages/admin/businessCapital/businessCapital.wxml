@@ -28,7 +28,7 @@
 <view class="grid col-2 padding bg-gray grid-square" bindtap="tapListItem" data-state="{{state}}">
     <view class="bg-white text-center">
         <view class=" text-xsl">
-            <text class="cuIcon-calendar"></text>
+            <text class="cuIcon-calendar text-red"></text>
         </view>
         <view class="text-black">套餐交易</view>
     </view>
