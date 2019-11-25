@@ -111,7 +111,6 @@ Component({
       }
     },
     advertState: function (e) {
-      console.log(e)
       if (e.type == 'load') {
         this.setData({
           showAdvert: true
