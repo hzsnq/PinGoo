@@ -42,7 +42,8 @@ Component({
     sorterList: null,
     subNavShow: false,
     subSelectName: '全部',
-    loadMore: false
+    loadMore: false,
+    showAdvert: true
   },
   /*组件生命周期*/
   lifetimes: {
@@ -343,6 +344,18 @@ Component({
       wx.navigateTo({
         url: "/pages/business/businessInfo/businessInfo?id=" + id
       })
+    },
+    advertState: function (e) {
+      console.log(e)
+      if (e.type == 'load') {
+        this.setData({
+          showAdvert: true
+        })
+      } else {
+        this.setData({
+          showAdvert: false
+        })
+      }
     }
   }
 })

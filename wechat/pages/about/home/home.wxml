@@ -67,3 +67,4 @@
         </view>
     </view>
 </view>
+<ad unit-id="adunit-826b44afa629ac48" ad-type="video" ad-theme="white" style="margin-top:20px" bindload="advertState" ad-intervals="{{50}}" wx:if="{{showAdvert}}" binderror="advertState"></ad>

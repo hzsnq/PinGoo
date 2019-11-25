@@ -44,8 +44,7 @@
                 </view>
             </swiper-item>
         </swiper>
-        <!-- banner广告 -->
-        <ad unit-id="adunit-7c4c2d2415e851e8"></ad>
+        <ad unit-id="adunit-7c4c2d2415e851e8" bindload="advertState" ad-intervals="{{50}}" wx:if="{{showAdvert}}" binderror="advertState"></ad>
         <!-- 推荐商家标题 -->
         <view class="cu-bar bg-white">
             <view class="action">
@@ -105,6 +104,7 @@
                 </view>
             </view>
         </view>
+        <ad unit-id="adunit-c8a3c1c8d3346a6c" bindload="advertState" ad-intervals="{{50}}" wx:if="{{showAdvert}}" binderror="advertState"></ad>
     </view>
     <!-- 加载框 -->
     <cu-load bgColor="{{bgColor}}" isShow="{{isShow}}" isLoad="{{isLoad}}"></cu-load>

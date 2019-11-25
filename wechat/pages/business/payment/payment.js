@@ -62,7 +62,7 @@ Page({
         if (this.data.orderInfo.price == 0) {
           app.showTips(d.data.msg);
           wx.redirectTo({
-            url: "/pages/index/index?page_cur=order&type=1"
+            url: "/pages/index/index?page_cur=order"
           })
           return
         }
@@ -93,7 +93,7 @@ Page({
           })
           console.log(res)
           wx.redirectTo({
-            url: "/pages/index/index?page_cur=order&type=1"
+            url: "/pages/index/index?page_cur=order"
           })
         },
         'fail': function (res) {

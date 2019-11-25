@@ -12,6 +12,7 @@ Component({
     orderList: [],
     navList: [{ id: 1, name: '待使用', index: 0 }, { id: 2, name: '待评价', index: 1 }, { id: 3, name: '已完成', index: 2 }, { id: 10, name: '退订单', index: 3 }],
     TabCur: 0,
+    showAdvert: true
   },
   /*组件生命周期*/
   lifetimes: {
@@ -111,7 +112,7 @@ Component({
       params.user_id = wx.getStorageSync("user_id");
       params.use_state = id;
       API.APIOrder.FightListUse(params).then(d => {
-        console.log(d)
+        // console.log(d)
         if (d.statusCode == 200) {
           this.setData({
             orderList: d.data.list_fight,
@@ -186,6 +187,18 @@ Component({
       wx.navigateTo({
         url: '/pages/order/orderEvaluate/orderEvaluate?id=' + id,
       })
+    },
+    advertState: function (e) {
+      console.log(e)
+      if (e.type == 'load') {
+        this.setData({
+          showAdvert: true
+        })
+      } else {
+        this.setData({
+          showAdvert: false
+        })
+      }
     }
   }
 })

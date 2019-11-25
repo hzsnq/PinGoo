@@ -59,6 +59,12 @@ Page({
       })
       this.selectComponent("#classify").showClassify(this.data.toView, options.item_id);
     }
+    //判断是否是订单页
+    if (options.page_cur == 'order') {
+      this.setData({
+        PageCur: options.page_cur
+      })
+    }
   },
   onShow: function () {
     //需要获取实时位置，是否需要位置信息，减少网络请求

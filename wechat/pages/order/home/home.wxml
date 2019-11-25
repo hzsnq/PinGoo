@@ -62,8 +62,10 @@
                 </button>
             </view>
         </view>
+        <ad unit-id="adunit-c8a3c1c8d3346a6c" bindload="advertState" binderror="advertState" ad-intervals="{{50}}" wx:if="{{showAdvert&&index==1}}"></ad>
     </view>
 </view>
+<ad unit-id="adunit-c176a00b4153e7b9" bindload="advertState" binderror="advertState" ad-intervals="{{50}}" wx:if="{{showAdvert&&!orderList.length>0}}"></ad>
 <page-default isShow="{{!orderList.length>0}}">
     <view slot="content">暂无订单</view>
 </page-default>

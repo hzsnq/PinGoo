@@ -70,7 +70,9 @@
                     </view>
                 </view>
             </view>
+            <ad unit-id="adunit-29149e0f839d5e56" bindload="advertState" binderror="advertState" ad-intervals="{{50}}" wx:if="{{showAdvert&&index==1}}"></ad>
         </view>
+        <!-- <ad unit-id="adunit-29149e0f839d5e56" bindload="advertState" binderror="advertState" ad-intervals="{{50}}" wx:if="{{showAdvert}}"></ad> -->
     </view>
     <!-- 加载框 -->
     <cu-load bgColor="{{bgColor}}" isShow="{{isShow}}" isLoad="{{isLoad}}"></cu-load>
